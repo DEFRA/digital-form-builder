@@ -230,6 +230,9 @@
         {
           "path": "/incineration-elsewhere-in-world-loaded-in-uk",
           "if": "incinerationElsewhere == 'other'"
+        },
+        {
+          "path": "/licence-required-no-exemption"
         }
       ]
     },
