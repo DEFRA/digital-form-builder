@@ -40,7 +40,7 @@ const manifest = {
         plugin: 'yar',
         options: {
           cookieOptions: {
-            password: 'the-password-must-be-at-least-32-characters-long',
+            password: Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join(''),
             isSecure: false,
             isHttpOnly: true
           }
