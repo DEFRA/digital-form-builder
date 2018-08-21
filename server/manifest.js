@@ -20,7 +20,7 @@ const viewsContext = {
 const manifest = {
   server: {
     port: process.env.PORT || config.server.port,
-    host: config.server.host,
+    // host: config.server.host,
     routes: {
       validate: {
         options: {
