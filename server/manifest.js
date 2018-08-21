@@ -37,6 +37,16 @@ const manifest = {
         options: config.logging
       },
       {
+        plugin: 'yar',
+        options: {
+          cookieOptions: {
+            password: 'the-password-must-be-at-least-32-characters-long',
+            isSecure: false,
+            isHttpOnly: true
+          }
+        }
+      },
+      {
         plugin: 'vision',
         options: {
           engines: {
