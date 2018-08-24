@@ -1,12 +1,12 @@
-const path = require('path')
+// const path = require('path')
 const nunjucks = require('nunjucks')
 const config = require('../config')
 const pkg = require('../package.json')
 const { getState, mergeState } = require('./db')
 
 const analyticsAccount = config.analyticsAccount
-const dataFilePath = path.join(__dirname, './govsite.mmo.json')
-const data = require(dataFilePath)
+// const dataFilePath = path.join(__dirname, './govsite.mmo.json')
+// const data = require(dataFilePath)
 const playgroundModel = require('./govsite.playground.json')
 
 const viewsContext = {
@@ -94,11 +94,11 @@ const manifest = {
       },
       {
         plugin: 'digital-form-builder-engine',
-        options: { data: data, getState, mergeState, ordnanceSurveyKey: config.ordnanceSurveyKey, playgroundModel }
+        options: { getState, mergeState, ordnanceSurveyKey: config.ordnanceSurveyKey, playgroundModel }
       },
       {
         plugin: 'digital-form-builder-designer',
-        options: { path: dataFilePath, playgroundModel }
+        options: { playgroundModel }
       },
       './plugins/router',
       './plugins/error-pages'
