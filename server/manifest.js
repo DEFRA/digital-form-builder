@@ -12,8 +12,8 @@ const playgroundModel = require('./govsite.playground.json')
 const viewsContext = {
   appVersion: pkg.version,
   assetPath: '/assets',
-  serviceName: 'Service name',
-  pageTitle: 'Service name - GOV.UK',
+  serviceName: 'Marine Management Organisation',
+  pageTitle: 'Marine Management Organisation - GOV.UK',
   analyticsAccount: analyticsAccount,
   BROWSER_REFRESH_URL: process.env.BROWSER_REFRESH_URL
 }
