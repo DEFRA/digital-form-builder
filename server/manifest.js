@@ -41,7 +41,7 @@ const manifest = {
         plugin: 'yar',
         options: {
           cookieOptions: {
-            password: Array(32).fill(0).map(x => Math.random().toString(36).charAt(2)).join(''),
+            password: process.env.COOKIE_PASSWORD,
             isSecure: false,
             isHttpOnly: true
           }
