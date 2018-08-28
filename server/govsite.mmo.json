@@ -92,12 +92,12 @@
       ],
       "next": [
         {
-          "path": "/activity-type-mmo-jurisdiction",
+          "path": "/activity-type",
           "if": "jurisdiction == 'englishWaters' || jurisdiction == 'northernIrishOffshoreWaters'"
         },
         {
-          "path": "/activity-type-elsewhere-in-world",
-          "if": "jurisdiction == 'elsewhereInWorld'"
+          "path": "/activity-type-elsewhere-in-the-world",
+          "if": "jurisdiction == 'elsewhere'"
         },
         {
           "path": "/licence-not-required-devolved"
@@ -105,57 +105,285 @@
       ]
     },
     {
-      "path": "/activity-type-mmo-jurisdiction",
+      "path": "/activity-type",
       "section": "checkBeforeStart",
       "components": [
         {
           "options": {
-            "list": "activityTypeMMOJurisdiction"
+            "list": "activityType"
           },
           "type": "RadiosField",
-          "name": "activityTypeMMOJurisdiction",
-          "title": "What type of activity will be undertaken?",
-          "schema": {}
-        }
-      ],
-      "next": []
-    },
-    {
-      "path": "/activity-type-elsewhere-in-world",
-      "section": "checkBeforeStart",
-      "components": [
-        {
-          "options": {
-            "list": "activityTypeElsewhereInTheWorld"
-          },
-          "type": "RadiosField",
-          "name": "activityTypeElsewhereInTheWorld",
+          "name": "activityType",
           "title": "What type of activity will be undertaken?",
           "schema": {}
         }
       ],
       "next": [
         {
-          "path": "/deposit-elsewhere-in-world",
-          "if": "activityTypeElsewhereInTheWorld == 'deposit'"
+          "path": "/construction",
+          "if": "activityType == 'construction'"
         },
         {
-          "path": "/incineration-elsewhere-in-world",
-          "if": "activityTypeElsewhereInTheWorld == 'incineration'"
+          "path": "/deposit-method",
+          "if": "activityType == 'deposit'"
         },
         {
-          "path": "/scuttling-elsewhere-in-world",
-          "if": "activityTypeElsewhereInTheWorld == 'scuttling'"
+          "path": "/removal",
+          "if": "activityType == 'removal'"
+        },
+        {
+          "path": "/dredging",
+          "if": "activityType == 'dredging'"
+        },
+        {
+          "path": "/incineration",
+          "if": "activityType == 'incineration'"
+        },
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "activityType == 'depositExplosive'"
+        },
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "activityType == 'scuttling'"
         }
       ]
     },
     {
-      "path": "/deposit-elsewhere-in-world",
+      "path": "/construction",
       "section": "checkBeforeStart",
       "components": [
         {
           "options": {
-            "list": "depositElsewhereInWorld"
+            "list": "constructionActivityType"
+          },
+          "type": "RadiosField",
+          "name": "constructionActivityType",
+          "title": "What is the purpose of your activity?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/construction-maintenance",
+          "if": "constructionActivityType == 'maintenance'"
+        },
+        {
+          "path": "/construction-new"
+        }
+      ]
+    },
+    {
+      "path": "/construction-maintenance",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "constructionMaintenanceActivityType"
+          },
+          "type": "RadiosField",
+          "name": "constructionMaintenanceActivityType",
+          "title": "What does your activity relate to?",
+          "schema": {}
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/construction-new",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "constructionNewActivityType"
+          },
+          "type": "RadiosField",
+          "name": "constructionNewActivityType",
+          "title": "What does your activity relate to?",
+          "schema": {}
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/deposit-method",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "depositMethod"
+          },
+          "type": "RadiosField",
+          "name": "depositMethod",
+          "title": "How will the substance or object be deposited?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-not-required",
+          "if": "depositMethod == 'other'"
+        },
+        {
+          "path": "/deposit-activity-type"
+        }
+      ]
+    },
+    {
+      "path": "/deposit-activity-type",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "depositActivityType"
+          },
+          "type": "RadiosField",
+          "name": "depositActivityType",
+          "title": "What is the purpose of your activity?",
+          "schema": {}
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/removal",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {},
+          "type": "YesNoField",
+          "name": "removalFromSeaBed",
+          "title": "Is the substance or object to be removed on the seabed?",
+          "hint": "‘Seabed’ comprises the ground under the sea including anything laying on it such as a wreck",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-not-required",
+          "if": "removalFromSeaBed == false"
+        },
+        {
+          "path": "/removal-method"
+        }
+      ]
+    },
+    {
+      "path": "/removal-method",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "removalMethod"
+          },
+          "type": "RadiosField",
+          "name": "removalMethod",
+          "title": "How will the removal be made?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-not-required",
+          "if": "removalMethod == 'other'"
+        },
+        {
+          "path": "/removal-activity-type"
+        }
+      ]
+    },
+    {
+      "path": "/removal-activity-type",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "removalActivityType"
+          },
+          "type": "RadiosField",
+          "name": "removalActivityType",
+          "title": "What is the purpose of your activity?",
+          "schema": {}
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/dredging",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "dredgingActivityType"
+          },
+          "type": "RadiosField",
+          "name": "dredgingActivityType",
+          "title": "What is the purpose of your activity?",
+          "schema": {}
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/incineration",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "incineration"
+          },
+          "type": "RadiosField",
+          "name": "incineration",
+          "title": "Where will the substance or object be incinerated?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-not-required",
+          "if": "incineration == 'other'"
+        },
+        {
+          "path": "/licence-required-no-exemption"
+        }
+      ]
+    },
+    {
+      "path": "/activity-type-elsewhere-in-the-world",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "activityTypeElsewhere"
+          },
+          "type": "RadiosField",
+          "name": "activityTypeElsewhere",
+          "title": "What type of activity will be undertaken?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/deposit-elsewhere-in-the-world",
+          "if": "activityTypeElsewhere == 'deposit'"
+        },
+        {
+          "path": "/incineration-elsewhere-in-the-world",
+          "if": "activityTypeElsewhere == 'incineration'"
+        },
+        {
+          "path": "/scuttling-elsewhere-in-the-world",
+          "if": "activityTypeElsewhere == 'scuttling'"
+        }
+      ]
+    },
+    {
+      "path": "/deposit-elsewhere-in-the-world",
+      "section": "checkBeforeStart",
+      "components": [
+        {
+          "options": {
+            "list": "depositElsewhere"
           },
           "type": "RadiosField",
           "name": "depositElsewhere",
@@ -165,7 +393,7 @@
       ],
       "next": [
         {
-          "path": "/deposit-elsewhere-in-world-loaded-in-uk",
+          "path": "/deposit-elsewhere-in-the-world-loaded-in-uk",
           "if": "depositElsewhere == 'other'"
         },
         {
@@ -174,15 +402,15 @@
       ]
     },
     {
-      "path": "/deposit-elsewhere-in-world-loaded-in-uk",
+      "path": "/deposit-elsewhere-in-the-world-loaded-in-uk",
       "section": "checkBeforeStart",
       "components": [
         {
           "options": {
-            "list": "depositElsewhereInWorldOtherLoaded"
+            "list": "depositElsewhereOtherLoaded"
           },
           "type": "RadiosField",
-          "name": "depositElsewhereInWorldOtherLoaded",
+          "name": "depositElsewhereOtherLoaded",
           "title": "Where was the substance or object to be deposited loaded?",
           "schema": {}
         }
@@ -190,11 +418,11 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "depositElsewhereInWorldOtherLoaded == 'none'"
+          "if": "depositElsewhereOtherLoaded == 'none'"
         },
         {
           "path": "/licence-required-no-exemption",
-          "if": "depositElsewhereInWorldOtherLoaded != 'none'"
+          "if": "depositElsewhereOtherLoaded != 'none'"
         }
       ]
     },
@@ -213,12 +441,12 @@
       "title": "Licence is required"
     },
     {
-      "path": "/incineration-elsewhere-in-world",
+      "path": "/incineration-elsewhere-in-the-world",
       "section": "checkBeforeStart",
       "components": [
         {
           "options": {
-            "list": "incinerationElsewhereInWorld"
+            "list": "incinerationElsewhere"
           },
           "type": "RadiosField",
           "name": "incinerationElsewhere",
@@ -228,7 +456,7 @@
       ],
       "next": [
         {
-          "path": "/incineration-elsewhere-in-world-loaded-in-uk",
+          "path": "/incineration-elsewhere-in-the-world-loaded-in-uk",
           "if": "incinerationElsewhere == 'other'"
         },
         {
@@ -237,12 +465,12 @@
       ]
     },
     {
-      "path": "/incineration-elsewhere-in-world-loaded-in-uk",
+      "path": "/incineration-elsewhere-in-the-world-loaded-in-uk",
       "section": "checkBeforeStart",
       "components": [
         {
           "type": "YesNoField",
-          "name": "incinerationElsewhereInWorldOtherLoadedInUk",
+          "name": "incinerationElsewhereOtherLoadedInUk",
           "title": "Will the substance or object for incineration be loaded in any part of the United Kingdom (except Scotland)?",
           "options": {},
           "schema": {}
@@ -251,7 +479,7 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "incinerationElsewhereInWorldOtherLoadedInUk == false"
+          "if": "incinerationElsewhereOtherLoadedInUk == false"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -259,12 +487,12 @@
       ]
     },
     {
-      "path": "/scuttling-elsewhere-in-world",
+      "path": "/scuttling-elsewhere-in-the-world",
       "section": "checkBeforeStart",
       "components": [
         {
           "options": {
-            "list": "scuttlingElsewhereInWorld"
+            "list": "scuttlingElsewhere"
           },
           "type": "RadiosField",
           "name": "scuttlingElsewhere",
@@ -277,21 +505,21 @@
           "path": "/licence-required-no-exemption"
         },
         {
-          "path": "/scuttling-elsewhere-in-world-towed-propelled-from-uk",
+          "path": "/scuttling-elsewhere-in-the-world-towed-propelled-from-uk",
           "if": "scuttlingElsewhere == 'other'"
         }
       ]
     },
     {
-      "path": "/scuttling-elsewhere-in-world-towed-propelled-from-uk",
+      "path": "/scuttling-elsewhere-in-the-world-towed-propelled-from-uk",
       "section": "checkBeforeStart",
       "components": [
         {
           "options": {
-            "list": "scuttlingElsewhereInWorldOtherTowedPropelled"
+            "list": "scuttlingElsewhereOtherTowedPropelled"
           },
           "type": "RadiosField",
-          "name": "scuttlingElsewhereInWorldOtherTowedPropelled",
+          "name": "scuttlingElsewhereOtherTowedPropelled",
           "title": "Where will the vessel or container be towed or propelled from, for the purpose its sinking",
           "schema": {}
         }
@@ -299,7 +527,7 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "scuttlingElsewhereInWorldOtherTowedPropelled == 'none'"
+          "if": "scuttlingElsewhereOtherTowedPropelled == 'none'"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -364,12 +592,12 @@
         },
         {
           "text": "Somewhere else in the world",
-          "value": "elsewhereInWorld"
+          "value": "elsewhere"
         }
       ]
     },
     {
-      "name": "activityTypeMMOJurisdiction",
+      "name": "activityType",
       "title": "Activity Type (MMO Jurisdiction)",
       "type": "string",
       "items": [
@@ -390,18 +618,301 @@
           "value": "dredging"
         },
         {
-          "text": "Deposit or use of an explosive substance or obje",
+          "text": "Incinerate a substance or object",
+          "value": "incineration"
+        },
+        {
+          "text": "Deposit or use of an explosive substance or object",
           "value": "depositExplosive"
         },
         {
           "text": "Sinking of a vessel or floating container",
-          "value": "sinkingVesselOrContainer"
+          "value": "scuttling"
         }
       ]
     },
     {
-      "name": "activityTypeElsewhereInTheWorld",
-      "title": "ActivityType (Elsewhere in the world)",
+      "name": "constructionActivityType",
+      "title": "Construction Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Maintenance of existing structures and assets",
+          "value": "maintenance"
+        },
+        {
+          "text": "Construction of something new",
+          "value": "new"
+        }
+      ]
+    },
+    {
+      "name": "constructionMaintenanceActivityType",
+      "title": "Construction Maintenance Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Mooring or aid to navigation",
+          "value": "mooringOrNavigation"
+        },
+        {
+          "text": "Harbour works",
+          "value": "harbourWorks"
+        },
+        {
+          "text": "Coastal Protection, drainage or flood defence",
+          "value": "coastalProtectionDrainageOrFloodDefence"
+        },
+        {
+          "text": "Cables and pipelines",
+          "value": "cablesAndPipelines"
+        },
+        {
+          "text": "An activity carried on wholly under the sea in connection with the construction or operation of a bored tunnel",
+          "value": "boredTunnel"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "name": "constructionNewActivityType",
+      "title": "Construction New Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Mooring or aid to navigation",
+          "value": "mooringOrNavigation"
+        },
+        {
+          "text": "A pontoon",
+          "value": "pontoon"
+        },
+        {
+          "text": "An emergency activity in response to flood or flood risk",
+          "value": "floodEmergency"
+        },
+        {
+          "text": "An activity carried on wholly under the sea in connection with the construction or operation of a bored tunnel",
+          "value": "boredTunnel"
+        },
+        {
+          "text": "Deep sea mining or scheduled works under the Crossrail Act",
+          "value": "deepSeaOrCrossrail"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "name": "depositMethod",
+      "title": "Desposit Method",
+      "type": "string",
+      "items": [
+        {
+          "text": "From a vehicle or vessel",
+          "value": "vehicleOrVessel"
+        },
+        {
+          "text": "From an aircraft",
+          "value": "aircraft"
+        },
+        {
+          "text": "From a marine structure",
+          "value": "marineStructure"
+        },
+        {
+          "text": "From a floating container in the sea",
+          "value": "floatingContainer"
+        },
+        {
+          "text": "From a structure on land constructed or adapted wholly or mainly for the purposes of depositing solids in the sea",
+          "value": "landStructure"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "name": "depositActivityType",
+      "title": "Deposit Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Markers, moorings, pontoons and aids to navigations",
+          "value": "markersMooringsOrPontoons"
+        },
+        {
+          "text": "Scientific research - instruments, associated equipment and tracers",
+          "value": "scientificResearch"
+        },
+        {
+          "text": "Maintenance - existing structures or assets",
+          "value": "maintenance"
+        },
+        {
+          "text": "Emergency – safety, pollution response and accident investigation",
+          "value": "emergency"
+        },
+        {
+          "text": "Fishing (including shellfish)",
+          "value": "fishing"
+        },
+        {
+          "text": "Vessels – Launching of vessels, rights of foreign vessels, deposits in the course of normal navigation, deposits in the course of aggregate or mineral dredging and dismantling of ships.",
+          "value": "vessels"
+        },
+        {
+          "text": "Defence activities, deep sea mining or scheduled works under the Crossrail act",
+          "value": "defenceOrCrossrail"
+        }
+      ]
+    },
+    {
+      "name": "removalMethod",
+      "title": "Removal Method",
+      "type": "string",
+      "items": [
+        {
+          "text": "A vehicle or vessel",
+          "value": "vehicleOrVessel"
+        },
+        {
+          "text": "An aircraft",
+          "value": "aircraft"
+        },
+        {
+          "text": "A marine structure",
+          "value": "marineStructure"
+        },
+        {
+          "text": "A floating container in the sea",
+          "value": "floatingContainer"
+        },
+        {
+          "text": "A structure on land constructed or adapted wholly or mainly for the purposes of depositing solids in the sea",
+          "value": "landStructure"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "name": "removalActivityType",
+      "title": "Removal Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Markers, moorings, pontoons and aids to navigation",
+          "value": "markersMooringsOrPontoons"
+        },
+        {
+          "text": "Scientific research - instruments, associated equipment, samples and testing and analysis",
+          "value": "scientificResearch"
+        },
+        {
+          "text": "Maintenance - existing structures or assets",
+          "value": "maintenance"
+        },
+        {
+          "text": "Dead animals, litter, obstructions or accidental deposits",
+          "value": "waste"
+        },
+        {
+          "text": "Emergency – safety, prevention of pollution and accident investigation",
+          "value": "emergency"
+        },
+        {
+          "text": "Fishing (including shellfish)",
+          "value": "fishing"
+        },
+        {
+          "text": "Vessels – Rights of foreign vessels and dismantling of ships",
+          "value": "vessels"
+        },
+        {
+          "text": "Defence activities, deep sea mining or scheduled works under the Crossrail act",
+          "value": "defenceOrCrossrail"
+        }
+      ]
+    },
+    {
+      "name": "dredgingActivityType",
+      "title": "Dredging Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Navigational dredging",
+          "value": "navigationalDredging"
+        },
+        {
+          "text": "Shellfish propagation and cultivation",
+          "value": "shellfish"
+        },
+        {
+          "text": "Coastal Protection, drainage or flood defence",
+          "value": "coastalProtectionDrainageOrFloodDefence"
+        },
+        {
+          "text": "Emergency",
+          "value": "emergency"
+        },
+        {
+          "text": "Safety/training",
+          "value": "safetyOrTraining"
+        },
+        {
+          "text": "Prevention of pollution",
+          "value": "pollutionPrevention"
+        },
+        {
+          "text": "Vessels – Rights of foreign vessels and dismantling of ships",
+          "value": "vessels"
+        },
+        {
+          "text": "Deep sea mining or scheduled works under the Crossrail act",
+          "value": "deepSeaOrCrossrail"
+        }
+      ]
+    },
+    {
+      "name": "incineration",
+      "title": "Incineration",
+      "type": "string",
+      "items": [
+        {
+          "text": "On a vehicle",
+          "value": "vehicle"
+        },
+        {
+          "text": "On a vessel",
+          "value": "vessel"
+        },
+        {
+          "text": "On a marine structure",
+          "value": "marineStructure"
+        },
+        {
+          "text": "On a floating container",
+          "value": "controlledFloatingContainer"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "name": "activityTypeElsewhere",
+      "title": "Activity Type (Elsewhere in the world)",
       "type": "string",
       "items": [
         {
@@ -423,7 +934,7 @@
       ]
     },
     {
-      "name": "depositElsewhereInWorld",
+      "name": "depositElsewhere",
       "title": "Desposit (Elsewhere in the world)",
       "type": "string",
       "items": [
@@ -450,7 +961,7 @@
       ]
     },
     {
-      "name": "depositElsewhereInWorldOtherLoaded",
+      "name": "depositElsewhereOtherLoaded",
       "title": "Desposit Loaded (Elsewhere in the world)",
       "type": "string",
       "items": [
@@ -469,7 +980,7 @@
       ]
     },
     {
-      "name": "incinerationElsewhereInWorld",
+      "name": "incinerationElsewhere",
       "title": "Incineration (Elsewhere in the world)",
       "type": "string",
       "items": [
@@ -482,7 +993,7 @@
           "value": "britishMarineStructure"
         },
         {
-          "text": "On a Floating container controlled from a British vessel, British aircraft, or British marine structure.",
+          "text": "On a floating container controlled from a British vessel, British aircraft, or British marine structure.",
           "value": "controlledFloatingContainer"
         },
         {
@@ -492,7 +1003,7 @@
       ]
     },
     {
-      "name": "scuttlingElsewhereInWorld",
+      "name": "scuttlingElsewhere",
       "title": "Scuttling (Elsewhere in the world)",
       "type": "string",
       "items": [
@@ -515,7 +1026,7 @@
       ]
     },
     {
-      "name": "scuttlingElsewhereInWorldOtherTowedPropelled",
+      "name": "scuttlingElsewhereOtherTowedPropelled",
       "title": "Scuttling Towed/Propelled (Elsewhere in the world)",
       "type": "string",
       "items": [
