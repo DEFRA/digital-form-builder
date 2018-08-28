@@ -50,7 +50,6 @@
     {
       "path": "/licence-not-required",
       "title": "Licence is not required",
-      "section": "checkBeforeStart",
       "components": [
         {
           "type": "Para",
@@ -64,7 +63,6 @@
     {
       "path": "/licence-not-required-devolved",
       "title": "Licence not required",
-      "section": "checkBeforeStart",
       "components": [
         {
           "type": "Para",
@@ -74,6 +72,19 @@
         }
       ],
       "next": []
+    },
+    {
+      "path": "/licence-required-no-exemption",
+      "components": [
+        {
+          "type": "Para",
+          "content": "Based on the information provided the activity requires a\r\nlicence. No exemption is available and the activity is not suitable for self-service licensing.\r\n<br>\r\n<br>\r\n<a href=\"#\">Apply for a marine licence</a>",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "next": [],
+      "title": "Licence is required"
     },
     {
       "path": "/jurisdiction",
@@ -151,7 +162,7 @@
     },
     {
       "path": "/construction",
-      "section": "checkBeforeStart",
+      "section": "construction",
       "components": [
         {
           "options": {
@@ -175,7 +186,7 @@
     },
     {
       "path": "/construction-maintenance",
-      "section": "checkBeforeStart",
+      "section": "construction",
       "components": [
         {
           "options": {
@@ -191,7 +202,7 @@
     },
     {
       "path": "/construction-new",
-      "section": "checkBeforeStart",
+      "section": "construction",
       "components": [
         {
           "options": {
@@ -207,7 +218,7 @@
     },
     {
       "path": "/deposit-method",
-      "section": "checkBeforeStart",
+      "section": "deposit",
       "components": [
         {
           "options": {
@@ -231,7 +242,7 @@
     },
     {
       "path": "/deposit-activity-type",
-      "section": "checkBeforeStart",
+      "section": "deposit",
       "components": [
         {
           "options": {
@@ -247,7 +258,7 @@
     },
     {
       "path": "/removal",
-      "section": "checkBeforeStart",
+      "section": "removal",
       "components": [
         {
           "options": {},
@@ -270,7 +281,7 @@
     },
     {
       "path": "/removal-method",
-      "section": "checkBeforeStart",
+      "section": "removal",
       "components": [
         {
           "options": {
@@ -294,7 +305,7 @@
     },
     {
       "path": "/removal-activity-type",
-      "section": "checkBeforeStart",
+      "section": "removal",
       "components": [
         {
           "options": {
@@ -310,7 +321,7 @@
     },
     {
       "path": "/dredging",
-      "section": "checkBeforeStart",
+      "section": "dredging",
       "components": [
         {
           "options": {
@@ -326,7 +337,7 @@
     },
     {
       "path": "/incineration",
-      "section": "checkBeforeStart",
+      "section": "incineration",
       "components": [
         {
           "options": {
@@ -379,7 +390,7 @@
     },
     {
       "path": "/deposit-elsewhere-in-the-world",
-      "section": "checkBeforeStart",
+      "section": "elsewhereDeposit",
       "components": [
         {
           "options": {
@@ -403,7 +414,7 @@
     },
     {
       "path": "/deposit-elsewhere-in-the-world-loaded-in-uk",
-      "section": "checkBeforeStart",
+      "section": "elsewhereDeposit",
       "components": [
         {
           "options": {
@@ -427,22 +438,8 @@
       ]
     },
     {
-      "path": "/licence-required-no-exemption",
-      "section": "checkBeforeStart",
-      "components": [
-        {
-          "type": "Para",
-          "content": "Based on the information provided the activity requires a\r\nlicence. No exemption is available and the activity is not suitable for self-service licensing.\r\n<br>\r\n<br>\r\n<a href=\"#\">Apply for a marine licence</a>",
-          "options": {},
-          "schema": {}
-        }
-      ],
-      "next": [],
-      "title": "Licence is required"
-    },
-    {
       "path": "/incineration-elsewhere-in-the-world",
-      "section": "checkBeforeStart",
+      "section": "elsewhereIncineration",
       "components": [
         {
           "options": {
@@ -466,7 +463,7 @@
     },
     {
       "path": "/incineration-elsewhere-in-the-world-loaded-in-uk",
-      "section": "checkBeforeStart",
+      "section": "elsewhereIncineration",
       "components": [
         {
           "type": "YesNoField",
@@ -488,7 +485,7 @@
     },
     {
       "path": "/scuttling-elsewhere-in-the-world",
-      "section": "checkBeforeStart",
+      "section": "elsewhereScuttling",
       "components": [
         {
           "options": {
@@ -512,7 +509,7 @@
     },
     {
       "path": "/scuttling-elsewhere-in-the-world-towed-propelled-from-uk",
-      "section": "checkBeforeStart",
+      "section": "elsewhereScuttling",
       "components": [
         {
           "options": {
@@ -539,12 +536,44 @@
     {
       "name": "checkBeforeStart",
       "title": "Check before you start"
+    },
+    {
+      "name": "elsewhereDeposit",
+      "title": "Deposit elsewhere in the world"
+    },
+    {
+      "name": "elsewhereScuttling",
+      "title": "Scuttling elsewhere in the world"
+    },
+    {
+      "name": "elsewhereIncineration",
+      "title": "Incineration elsewhere in the world"
+    },
+    {
+      "name": "construction",
+      "title": "Construction"
+    },
+    {
+      "name": "deposit",
+      "title": "Deposit"
+    },
+    {
+      "name": "removal",
+      "title": "Removal"
+    },
+    {
+      "name": "dredging",
+      "title": "Dredging"
+    },
+    {
+      "name": "incineration",
+      "title": "Incineration"
     }
   ],
   "lists": [
     {
       "name": "inOverOnUnderSea",
-      "title": "Activity location (In, over, on or under Sea)",
+      "title": "Location (In, over, on or under sea)",
       "type": "string",
       "items": [
         {
@@ -598,7 +627,7 @@
     },
     {
       "name": "activityType",
-      "title": "Activity Type (MMO Jurisdiction)",
+      "title": "Activity Type (MMO)",
       "type": "string",
       "items": [
         {
@@ -912,7 +941,7 @@
     },
     {
       "name": "activityTypeElsewhere",
-      "title": "Activity Type (Elsewhere in the world)",
+      "title": "Activity Type (Elsewhere)",
       "type": "string",
       "items": [
         {
@@ -935,7 +964,7 @@
     },
     {
       "name": "depositElsewhere",
-      "title": "Desposit (Elsewhere in the world)",
+      "title": "Desposit (Elsewhere)",
       "type": "string",
       "items": [
         {
@@ -962,7 +991,7 @@
     },
     {
       "name": "depositElsewhereOtherLoaded",
-      "title": "Desposit Loaded (Elsewhere in the world)",
+      "title": "Desposit Loaded (Elsewhere)",
       "type": "string",
       "items": [
         {
@@ -981,7 +1010,7 @@
     },
     {
       "name": "incinerationElsewhere",
-      "title": "Incineration (Elsewhere in the world)",
+      "title": "Incineration (Elsewhere)",
       "type": "string",
       "items": [
         {
@@ -1004,7 +1033,7 @@
     },
     {
       "name": "scuttlingElsewhere",
-      "title": "Scuttling (Elsewhere in the world)",
+      "title": "Scuttling (Elsewhere)",
       "type": "string",
       "items": [
         {
@@ -1027,7 +1056,7 @@
     },
     {
       "name": "scuttlingElsewhereOtherTowedPropelled",
-      "title": "Scuttling Towed/Propelled (Elsewhere in the world)",
+      "title": "Scuttling Towed/Propelled (Elsewhere)",
       "type": "string",
       "items": [
         {
