@@ -419,7 +419,7 @@
         },
         {
           "type": "Para",
-          "content": "Click the continue button below if you require a licence or exemption for any of the above activities in the MMO jurisdictions.",
+          "content": "Click the continue button below if you require a licence or exemption for any of the below activities in the MMO jurisdictions.",
           "options": {},
           "schema": {}
         },
@@ -430,7 +430,7 @@
           "type": "RadiosField",
           "name": "type",
           "title": "Activities",
-          "hint": "Please select one of the following activities if you think you may require a licence or qualify for an exemption in the MMO jurisdictions",
+          "hint": "Select one of the following activities if you think you may require a licence or qualify for an exemption in the MMO jurisdictions",
           "schema": {}
         },
         {
