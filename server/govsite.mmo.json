@@ -25,7 +25,7 @@
             "list": "inOverOnUnderSea"
           },
           "type": "RadiosField",
-          "name": "activityLocation",
+          "name": "location",
           "title": "Where will your activity take place?",
           "schema": {}
         },
@@ -40,7 +40,7 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "activityLocation == 'other'"
+          "if": "location == 'other'"
         },
         {
           "path": "/jurisdiction"
@@ -54,6 +54,19 @@
         {
           "type": "Para",
           "content": "Based on the information provided a licence is not required for the activity.",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/licence-not-required-exemption-available-article-19",
+      "title": "Licence is not required",
+      "components": [
+        {
+          "type": "Para",
+          "content": "Based on the information provided your activity is one that meets the terms of an marine licence exemption set out in Article 19 of the Marine licence (exempted Activities) Order and a marine licence is therefore not required. This exemption does not require any action from you before it is undertaken.",
           "options": {},
           "schema": {}
         }
@@ -107,7 +120,7 @@
           "if": "jurisdiction == 'englishWaters' || jurisdiction == 'northernIrishOffshoreWaters'"
         },
         {
-          "path": "/activity-type-elsewhere-in-the-world",
+          "path": "/elsewhere-in-the-world/activity-type",
           "if": "jurisdiction == 'elsewhere'"
         },
         {
@@ -135,7 +148,7 @@
           "if": "activityType == 'construction'"
         },
         {
-          "path": "/deposit-method",
+          "path": "/deposit/method",
           "if": "activityType == 'deposit'"
         },
         {
@@ -147,7 +160,7 @@
           "if": "activityType == 'dredging'"
         },
         {
-          "path": "/incineration",
+          "path": "/incineration/method",
           "if": "activityType == 'incineration'"
         },
         {
@@ -169,23 +182,23 @@
             "list": "constructionActivityType"
           },
           "type": "RadiosField",
-          "name": "constructionActivityType",
+          "name": "activityType",
           "title": "What is the purpose of your activity?",
           "schema": {}
         }
       ],
       "next": [
         {
-          "path": "/construction-maintenance",
-          "if": "constructionActivityType == 'maintenance'"
+          "path": "/construction/maintenance",
+          "if": "activityType == 'maintenance'"
         },
         {
-          "path": "/construction-new"
+          "path": "/construction/new"
         }
       ]
     },
     {
-      "path": "/construction-maintenance",
+      "path": "/construction/maintenance",
       "section": "construction",
       "components": [
         {
@@ -193,7 +206,7 @@
             "list": "constructionMaintenanceActivityType"
           },
           "type": "RadiosField",
-          "name": "constructionMaintenanceActivityType",
+          "name": "maintenanceActivityType",
           "title": "What does your activity relate to?",
           "schema": {}
         }
@@ -201,7 +214,7 @@
       "next": []
     },
     {
-      "path": "/construction-new",
+      "path": "/construction/new",
       "section": "construction",
       "components": [
         {
@@ -209,7 +222,7 @@
             "list": "constructionNewActivityType"
           },
           "type": "RadiosField",
-          "name": "constructionNewActivityType",
+          "name": "newActivityType",
           "title": "What does your activity relate to?",
           "schema": {}
         }
@@ -217,7 +230,7 @@
       "next": []
     },
     {
-      "path": "/deposit-method",
+      "path": "/deposit/method",
       "section": "deposit",
       "components": [
         {
@@ -225,7 +238,7 @@
             "list": "depositMethod"
           },
           "type": "RadiosField",
-          "name": "depositMethod",
+          "name": "method",
           "title": "How will the substance or object be deposited?",
           "schema": {}
         }
@@ -233,15 +246,15 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "depositMethod == 'other'"
+          "if": "method == 'other'"
         },
         {
-          "path": "/deposit-activity-type"
+          "path": "/deposit/activity-type"
         }
       ]
     },
     {
-      "path": "/deposit-activity-type",
+      "path": "/deposit/activity-type",
       "section": "deposit",
       "components": [
         {
@@ -249,12 +262,155 @@
             "list": "depositActivityType"
           },
           "type": "RadiosField",
-          "name": "depositActivityType",
+          "name": "activityType",
           "title": "What is the purpose of your activity?",
           "schema": {}
         }
       ],
-      "next": []
+      "next": [
+        {
+          "path": "/deposit/maintenance",
+          "if": "activityType == 'maintenance'"
+        }
+      ]
+    },
+    {
+      "path": "/deposit/maintenance",
+      "section": "deposit",
+      "components": [
+        {
+          "options": {
+            "list": "depositMaintenanceActivityType"
+          },
+          "type": "RadiosField",
+          "name": "maintenanceActivityType",
+          "title": "Maintenance activity",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/deposit/maintenance/coastal-drainage-flood",
+          "if": "maintenanceActivityType == 'coastalProtectionDrainageOrFloodDefence'"
+        }
+      ]
+    },
+    {
+      "path": "/deposit/maintenance/coastal-drainage-flood",
+      "section": "deposit",
+      "components": [
+        {
+          "options": {
+            "list": "depositMaintenanceCoastalProtectionImplementer"
+          },
+          "type": "RadiosField",
+          "name": "maintenanceCoastalProtectionImplementer",
+          "title": "Who will carry on the activity",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/deposit/maintenance/coastal-drainage-flood/EA",
+          "if": "maintenanceCoastalProtectionImplementer == 'environmentAgency'"
+        },
+        {
+          "path": "/deposit/maintenance/coastal-drainage-flood/CPA",
+          "if": "maintenanceCoastalProtectionImplementer == 'coastProtectionAuthority'"
+        },
+        {
+          "path": "/licence-required-no-exemption"
+        }
+      ]
+    },
+    {
+      "path": "/deposit/maintenance/coastal-drainage-flood/EA",
+      "section": "deposit",
+      "components": [
+        {
+          "options": {},
+          "type": "YesNoField",
+          "name": "maintenanceCoastalProtectionEA",
+          "title": "Will the activity be carried on within the existing boundaries of the works being maintained?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "maintenanceCoastalProtectionEA == false"
+        },
+        {
+          "path": "/deposit/maintenance/coastal-drainage-flood/EA/beach-replenishment"
+        }
+      ]
+    },
+    {
+      "path": "/deposit/maintenance/coastal-drainage-flood/EA/beach-replenishment",
+      "section": "deposit",
+      "components": [
+        {
+          "options": {},
+          "type": "YesNoField",
+          "name": "maintenanceCoastalProtectionEABeachReplenishment",
+          "title": "Does the activity consist of beach replenishment?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "maintenanceCoastalProtectionEABeachReplenishment == true"
+        },
+        {
+          "path": "/licence-not-required-exemption-available-article-19"
+        }
+      ]
+    },
+    {
+      "path": "/deposit/maintenance/coastal-drainage-flood/CPA",
+      "section": "deposit",
+      "components": [
+        {
+          "options": {},
+          "type": "YesNoField",
+          "name": "maintenanceCoastalProtectionCPA",
+          "title": "Is the activity for the purpose of maintaining coast protection works?",
+          "hint": "Carried on within the existing boundaries of the works being maintained.",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "maintenanceCoastalProtectionCPA == false"
+        },
+        {
+          "path": "/deposit/maintenance/coastal-drainage-flood/CPA/beach-replenishment"
+        }
+      ]
+    },
+    {
+      "path": "/deposit/maintenance/coastal-drainage-flood/CPA/beach-replenishment",
+      "section": "deposit",
+      "components": [
+        {
+          "options": {},
+          "type": "YesNoField",
+          "name": "maintenanceCoastalProtectionCPABeachReplenishment",
+          "title": "Does the activity consist of beach replenishment?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "maintenanceCoastalProtectionCPABeachReplenishment == false"
+        },
+        {
+          "path": "/licence-not-required-exemption-available-article-19"
+        }
+      ]
     },
     {
       "path": "/removal",
@@ -263,7 +419,7 @@
         {
           "options": {},
           "type": "YesNoField",
-          "name": "removalFromSeaBed",
+          "name": "isFromSeaBed",
           "title": "Is the substance or object to be removed on the seabed?",
           "hint": "‘Seabed’ comprises the ground under the sea including anything laying on it such as a wreck",
           "schema": {}
@@ -272,15 +428,15 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "removalFromSeaBed == false"
+          "if": "isFromSeaBed == false"
         },
         {
-          "path": "/removal-method"
+          "path": "/removal/method"
         }
       ]
     },
     {
-      "path": "/removal-method",
+      "path": "/removal/method",
       "section": "removal",
       "components": [
         {
@@ -288,7 +444,7 @@
             "list": "removalMethod"
           },
           "type": "RadiosField",
-          "name": "removalMethod",
+          "name": "method",
           "title": "How will the removal be made?",
           "schema": {}
         }
@@ -296,15 +452,15 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "removalMethod == 'other'"
+          "if": "method == 'other'"
         },
         {
-          "path": "/removal-activity-type"
+          "path": "/removal/activity-type"
         }
       ]
     },
     {
-      "path": "/removal-activity-type",
+      "path": "/removal/activity-type",
       "section": "removal",
       "components": [
         {
@@ -312,7 +468,7 @@
             "list": "removalActivityType"
           },
           "type": "RadiosField",
-          "name": "removalActivityType",
+          "name": "activityType",
           "title": "What is the purpose of your activity?",
           "schema": {}
         }
@@ -328,7 +484,7 @@
             "list": "dredgingActivityType"
           },
           "type": "RadiosField",
-          "name": "dredgingActivityType",
+          "name": "activityType",
           "title": "What is the purpose of your activity?",
           "schema": {}
         }
@@ -336,15 +492,15 @@
       "next": []
     },
     {
-      "path": "/incineration",
+      "path": "/incineration/method",
       "section": "incineration",
       "components": [
         {
           "options": {
-            "list": "incineration"
+            "list": "incinerationMethod"
           },
           "type": "RadiosField",
-          "name": "incineration",
+          "name": "method",
           "title": "Where will the substance or object be incinerated?",
           "schema": {}
         }
@@ -352,7 +508,7 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "incineration == 'other'"
+          "if": "method == 'other'"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -360,7 +516,7 @@
       ]
     },
     {
-      "path": "/activity-type-elsewhere-in-the-world",
+      "path": "/elsewhere-in-the-world/activity-type",
       "section": "checkBeforeStart",
       "components": [
         {
@@ -375,37 +531,37 @@
       ],
       "next": [
         {
-          "path": "/deposit-elsewhere-in-the-world",
+          "path": "/elsewhere-in-the-world/deposit",
           "if": "activityTypeElsewhere == 'deposit'"
         },
         {
-          "path": "/incineration-elsewhere-in-the-world",
+          "path": "/elsewhere-in-the-world/incineration",
           "if": "activityTypeElsewhere == 'incineration'"
         },
         {
-          "path": "/scuttling-elsewhere-in-the-world",
+          "path": "/elsewhere-in-the-world/scuttling",
           "if": "activityTypeElsewhere == 'scuttling'"
         }
       ]
     },
     {
-      "path": "/deposit-elsewhere-in-the-world",
+      "path": "/elsewhere-in-the-world/deposit",
       "section": "elsewhereDeposit",
       "components": [
         {
           "options": {
-            "list": "depositElsewhere"
+            "list": "depositElsewhereMethod"
           },
           "type": "RadiosField",
-          "name": "depositElsewhere",
+          "name": "method",
           "title": "How will the deposit be made?",
           "schema": {}
         }
       ],
       "next": [
         {
-          "path": "/deposit-elsewhere-in-the-world-loaded-in-uk",
-          "if": "depositElsewhere == 'other'"
+          "path": "/elsewhere-in-the-world/deposit/where-loaded",
+          "if": "method == 'other'"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -413,15 +569,15 @@
       ]
     },
     {
-      "path": "/deposit-elsewhere-in-the-world-loaded-in-uk",
+      "path": "/elsewhere-in-the-world/deposit/where-loaded",
       "section": "elsewhereDeposit",
       "components": [
         {
           "options": {
-            "list": "depositElsewhereOtherLoaded"
+            "list": "depositElsewhereLoaded"
           },
           "type": "RadiosField",
-          "name": "depositElsewhereOtherLoaded",
+          "name": "loaded",
           "title": "Where was the substance or object to be deposited loaded?",
           "schema": {}
         }
@@ -429,32 +585,32 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "depositElsewhereOtherLoaded == 'none'"
+          "if": "otherLoaded == 'none'"
         },
         {
           "path": "/licence-required-no-exemption",
-          "if": "depositElsewhereOtherLoaded != 'none'"
+          "if": "otherLoaded != 'none'"
         }
       ]
     },
     {
-      "path": "/incineration-elsewhere-in-the-world",
+      "path": "/elsewhere-in-the-world/incineration",
       "section": "elsewhereIncineration",
       "components": [
         {
           "options": {
-            "list": "incinerationElsewhere"
+            "list": "incinerationElsewhereMethod"
           },
           "type": "RadiosField",
-          "name": "incinerationElsewhere",
+          "name": "method",
           "title": "Where will the incineration take place?",
           "schema": {}
         }
       ],
       "next": [
         {
-          "path": "/incineration-elsewhere-in-the-world-loaded-in-uk",
-          "if": "incinerationElsewhere == 'other'"
+          "path": "/elsewhere-in-the-world/incineration/where-loaded",
+          "if": "method == 'other'"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -462,12 +618,12 @@
       ]
     },
     {
-      "path": "/incineration-elsewhere-in-the-world-loaded-in-uk",
+      "path": "/elsewhere-in-the-world/incineration/where-loaded",
       "section": "elsewhereIncineration",
       "components": [
         {
           "type": "YesNoField",
-          "name": "incinerationElsewhereOtherLoadedInUk",
+          "name": "loadedInUk",
           "title": "Will the substance or object for incineration be loaded in any part of the United Kingdom (except Scotland)?",
           "options": {},
           "schema": {}
@@ -476,7 +632,7 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "incinerationElsewhereOtherLoadedInUk == false"
+          "if": "loadedInUk == false"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -484,15 +640,15 @@
       ]
     },
     {
-      "path": "/scuttling-elsewhere-in-the-world",
+      "path": "/elsewhere-in-the-world/scuttling",
       "section": "elsewhereScuttling",
       "components": [
         {
           "options": {
-            "list": "scuttlingElsewhere"
+            "list": "scuttlingElsewhereMethod"
           },
           "type": "RadiosField",
-          "name": "scuttlingElsewhere",
+          "name": "method",
           "title": "How will the sinking be controlled?",
           "schema": {}
         }
@@ -502,21 +658,21 @@
           "path": "/licence-required-no-exemption"
         },
         {
-          "path": "/scuttling-elsewhere-in-the-world-towed-propelled-from-uk",
-          "if": "scuttlingElsewhere == 'other'"
+          "path": "/elsewhere-in-the-world/scuttling/towed-or-propelled-from-uk",
+          "if": "method == 'other'"
         }
       ]
     },
     {
-      "path": "/scuttling-elsewhere-in-the-world-towed-propelled-from-uk",
+      "path": "/elsewhere-in-the-world/scuttling/towed-or-propelled-from-uk",
       "section": "elsewhereScuttling",
       "components": [
         {
           "options": {
-            "list": "scuttlingElsewhereOtherTowedPropelled"
+            "list": "scuttlingElsewhereTowedPropelled"
           },
           "type": "RadiosField",
-          "name": "scuttlingElsewhereOtherTowedPropelled",
+          "name": "towedOrPropelled",
           "title": "Where will the vessel or container be towed or propelled from, for the purpose its sinking",
           "schema": {}
         }
@@ -524,7 +680,7 @@
       "next": [
         {
           "path": "/licence-not-required",
-          "if": "scuttlingElsewhereOtherTowedPropelled == 'none'"
+          "if": "towedOrPropelled == 'none'"
         },
         {
           "path": "/licence-required-no-exemption"
@@ -804,6 +960,52 @@
       ]
     },
     {
+      "name": "depositMaintenanceActivityType",
+      "title": "Deposit Maintenance Activity Type",
+      "type": "string",
+      "items": [
+        {
+          "text": "Maintenance of coast protection, drainage or flood defence works",
+          "value": "coastalProtectionDrainageOrFloodDefence"
+        },
+        {
+          "text": "Emergency works in response to flood or flood risk",
+          "value": "floodEmergency"
+        },
+        {
+          "text": "Maintenance of harbour works",
+          "value": "harbourWorkMaintenance"
+        },
+        {
+          "text": "Cables and pipelines",
+          "value": "cablesAndPipelines"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
+      "name": "depositMaintenanceCoastalProtectionImplementer",
+      "title": "Deposit Maintenance Coastal Protection Implementer",
+      "type": "string",
+      "items": [
+        {
+          "text": "The Environment Agency or someone on behalf of the Environment Agency",
+          "value": "environmentAgency"
+        },
+        {
+          "text": "The Coast Protection Authority or someone on behalf of the Coast Protection Authority",
+          "value": "coastProtectionAuthority"
+        },
+        {
+          "text": "Other",
+          "value": "other"
+        }
+      ]
+    },
+    {
       "name": "removalMethod",
       "title": "Removal Method",
       "type": "string",
@@ -913,8 +1115,8 @@
       ]
     },
     {
-      "name": "incineration",
-      "title": "Incineration",
+      "name": "incinerationMethod",
+      "title": "IncinerationMethod",
       "type": "string",
       "items": [
         {
@@ -963,7 +1165,7 @@
       ]
     },
     {
-      "name": "depositElsewhere",
+      "name": "depositElsewhereMethod",
       "title": "Desposit (Elsewhere)",
       "type": "string",
       "items": [
@@ -990,7 +1192,7 @@
       ]
     },
     {
-      "name": "depositElsewhereOtherLoaded",
+      "name": "depositElsewhereLoaded",
       "title": "Desposit Loaded (Elsewhere)",
       "type": "string",
       "items": [
@@ -1009,7 +1211,7 @@
       ]
     },
     {
-      "name": "incinerationElsewhere",
+      "name": "incinerationElsewhereMethod",
       "title": "Incineration (Elsewhere)",
       "type": "string",
       "items": [
@@ -1032,7 +1234,7 @@
       ]
     },
     {
-      "name": "scuttlingElsewhere",
+      "name": "scuttlingElsewhereMethod",
       "title": "Scuttling (Elsewhere)",
       "type": "string",
       "items": [
@@ -1055,7 +1257,7 @@
       ]
     },
     {
-      "name": "scuttlingElsewhereOtherTowedPropelled",
+      "name": "scuttlingElsewhereTowedPropelled",
       "title": "Scuttling Towed/Propelled (Elsewhere)",
       "type": "string",
       "items": [
