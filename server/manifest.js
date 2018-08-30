@@ -5,7 +5,7 @@ const pkg = require('../package.json')
 const { getState, mergeState } = require('./db')
 
 const analyticsAccount = config.analyticsAccount
-const dataFilePath = path.join(__dirname, './govsite.mmo.json')
+const dataFilePath = path.join(__dirname, './govsite.mmo.simple.json')
 const data = require(dataFilePath)
 const playgroundModel = require('./govsite.playground.json')
 
