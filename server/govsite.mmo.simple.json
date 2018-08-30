@@ -1,53 +1,6 @@
 {
   "pages": [
     {
-      "path": "/",
-      "title": "MMO Exemptions Check Service",
-      "components": [
-        {
-          "type": "Para",
-          "content": "On this page describe the service, why they would need to use the service and the questions/tasks they'll be asked.<br/>Also include any documentation or information they could need to hand.",
-          "options": {},
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/activity-location"
-        }
-      ]
-    },
-    {
-      "path": "/activity-location",
-      "components": [
-        {
-          "options": {
-            "list": "inOverOnUnderSea"
-          },
-          "type": "RadiosField",
-          "name": "location",
-          "title": "Where will your activity take place?",
-          "schema": {}
-        },
-        {
-          "type": "InsetText",
-          "content": "‘Sea’ includes:<br>\r\n<ul>\r\n<li>any area submerged at mean high water spring tide</li>\r\n<li>the tidal range of any estuary, river or channel</li>\r\n<li>any areas which are closed permanently or intermittently by a lock or other artificial means against the regular action of the tide, where seawater flows into or out from the area, either continuously or from time to time.</li>\r\n</ul>",
-          "options": {},
-          "schema": {}
-        }
-      ],
-      "section": "checkBeforeStart",
-      "next": [
-        {
-          "path": "/licence-not-required",
-          "if": "location == 'other'"
-        },
-        {
-          "path": "/jurisdiction"
-        }
-      ]
-    },
-    {
       "path": "/licence-not-required",
       "title": "Licence is not required",
       "components": [
@@ -98,80 +51,6 @@
       ],
       "next": [],
       "title": "Licence is required"
-    },
-    {
-      "path": "/jurisdiction",
-      "section": "checkBeforeStart",
-      "components": [
-        {
-          "options": {
-            "list": "jurisdiction"
-          },
-          "type": "RadiosField",
-          "name": "jurisdiction",
-          "title": "Will your activity take place?",
-          "hint": "Not sure? Use the MMO’s <a href=\"http://defra.maps.arcgis.com/apps/webappviewer/ index.html?id=6d5a7b3a1f07440f947d1e31bfaa7d38\">interactive map</a> to find out",
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/activity-type",
-          "if": "jurisdiction == 'englishWaters' || jurisdiction == 'northernIrishOffshoreWaters'"
-        },
-        {
-          "path": "/elsewhere-in-the-world/activity-type",
-          "if": "jurisdiction == 'elsewhere'"
-        },
-        {
-          "path": "/licence-not-required-devolved"
-        }
-      ]
-    },
-    {
-      "path": "/activity-type",
-      "section": "checkBeforeStart",
-      "components": [
-        {
-          "options": {
-            "list": "activityType"
-          },
-          "type": "RadiosField",
-          "name": "activityType",
-          "title": "What type of activity will be undertaken?",
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/construction",
-          "if": "activityType == 'construction'"
-        },
-        {
-          "path": "/deposit/method",
-          "if": "activityType == 'deposit'"
-        },
-        {
-          "path": "/removal",
-          "if": "activityType == 'removal'"
-        },
-        {
-          "path": "/dredging",
-          "if": "activityType == 'dredging'"
-        },
-        {
-          "path": "/incineration/method",
-          "if": "activityType == 'incineration'"
-        },
-        {
-          "path": "/licence-required-no-exemption",
-          "if": "activityType == 'depositExplosive'"
-        },
-        {
-          "path": "/licence-required-no-exemption",
-          "if": "activityType == 'scuttling'"
-        }
-      ]
     },
     {
       "path": "/construction",
@@ -516,176 +395,129 @@
       ]
     },
     {
-      "path": "/elsewhere-in-the-world/activity-type",
+      "path": "/",
+      "title": "Why do I need to use this",
       "section": "checkBeforeStart",
       "components": [
         {
-          "options": {
-            "list": "activityTypeElsewhere"
-          },
-          "type": "RadiosField",
-          "name": "activityTypeElsewhere",
-          "title": "What type of activity will be undertaken?",
+          "type": "Para",
+          "content": "The Marine Management Organisation (MMO) Checker will help you find out if you qualify for an exemption or guide you to a licence for any of the activities below.",
+          "options": {},
           "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/elsewhere-in-the-world/deposit",
-          "if": "activityTypeElsewhere == 'deposit'"
         },
         {
-          "path": "/elsewhere-in-the-world/incineration",
-          "if": "activityTypeElsewhere == 'incineration'"
+          "type": "Html",
+          "content": "<div class=\"govuk-body\">Exemptions are available for certain activities either <b>in the sea</b>, <b>over the sea</b> or <b>on or under the sea bed</b> under certain conditions in the following MMO Jurisdications\r\n<ul>\r\n  <li>English waters</li>\r\n  <li>Northern Irish offshore waters</li>\r\n</ul>\r\n<p>\r\nNot sure? Click here for a description of <a href=\"/sea-and-waters-information\">waters</a> or you can use the <a href=\"http://defra.maps.arcgis.com/apps/webappviewer/\r\nindex.html?id=6d5a7b3a1f07440f947d1e31bfaa7d38\">MMO’s interactive map</a> to find\r\nout.\r\n</p></div>",
+          "options": {},
+          "schema": {}
         },
         {
-          "path": "/elsewhere-in-the-world/scuttling",
-          "if": "activityTypeElsewhere == 'scuttling'"
-        }
-      ]
-    },
-    {
-      "path": "/elsewhere-in-the-world/deposit",
-      "section": "elsewhereDeposit",
-      "components": [
+          "type": "InsetText",
+          "content": "For Northern Irish inshore waters,  Welsh or Scottish waters  you may require a marine licence from the <a href=\"/links-to-devolved-administrations-marine-management\">relevant devolved administration</a>.",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Para",
+          "content": "Click the continue button below if you require a licence or exemption for any of the below activities in the MMO jurisdictions.",
+          "options": {},
+          "schema": {}
+        },
         {
           "options": {
-            "list": "depositElsewhereMethod"
+            "list": "activityType"
           },
           "type": "RadiosField",
-          "name": "method",
-          "title": "How will the deposit be made?",
+          "name": "type",
+          "title": "Activities",
+          "hint": "Select one of the following activities if you think you may require a licence or qualify for an exemption in the MMO jurisdictions",
           "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/elsewhere-in-the-world/deposit/where-loaded",
-          "if": "method == 'other'"
         },
         {
-          "path": "/licence-required-no-exemption"
-        }
-      ]
-    },
-    {
-      "path": "/elsewhere-in-the-world/deposit/where-loaded",
-      "section": "elsewhereDeposit",
-      "components": [
-        {
-          "options": {
-            "list": "depositElsewhereLoaded"
-          },
-          "type": "RadiosField",
-          "name": "loaded",
-          "title": "Where was the substance or object to be deposited loaded?",
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/licence-not-required",
-          "if": "otherLoaded == 'none'"
-        },
-        {
-          "path": "/licence-required-no-exemption",
-          "if": "otherLoaded != 'none'"
-        }
-      ]
-    },
-    {
-      "path": "/elsewhere-in-the-world/incineration",
-      "section": "elsewhereIncineration",
-      "components": [
-        {
-          "options": {
-            "list": "incinerationElsewhereMethod"
-          },
-          "type": "RadiosField",
-          "name": "method",
-          "title": "Where will the incineration take place?",
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/elsewhere-in-the-world/incineration/where-loaded",
-          "if": "method == 'other'"
-        },
-        {
-          "path": "/licence-required-no-exemption"
-        }
-      ]
-    },
-    {
-      "path": "/elsewhere-in-the-world/incineration/where-loaded",
-      "section": "elsewhereIncineration",
-      "components": [
-        {
-          "type": "YesNoField",
-          "name": "loadedInUk",
-          "title": "Will the substance or object for incineration be loaded in any part of the United Kingdom (except Scotland)?",
+          "type": "Html",
+          "content": "<div class=\"govuk-warning-text\">\r\n  <span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span>\r\n  <strong class=\"govuk-warning-text__text\">\r\n    <span class=\"govuk-warning-text__assistive\">Warning</span>\r\nA licence may still be required if outside of the MMO jurisdiction. Click <a href=\"/licence-requirements-for-international-waters\">here</a> for more information.\r\n  </strong>\r\n</div>",
           "options": {},
           "schema": {}
         }
       ],
       "next": [
         {
-          "path": "/licence-not-required",
-          "if": "loadedInUk == false"
+          "path": "/construction",
+          "if": "type == 'construction'"
         },
         {
-          "path": "/licence-required-no-exemption"
+          "path": "/deposit/method",
+          "if": "type == 'deposit'"
+        },
+        {
+          "path": "/removal",
+          "if": "type == 'removal'"
+        },
+        {
+          "path": "/dredging",
+          "if": "type == 'dredging'"
+        },
+        {
+          "path": "/incineration/method",
+          "if": "type == 'incineration'"
+        },
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "type == 'depositExplosive'"
+        },
+        {
+          "path": "/licence-required-no-exemption",
+          "if": "type == 'scuttling'"
         }
       ]
     },
     {
-      "path": "/elsewhere-in-the-world/scuttling",
-      "section": "elsewhereScuttling",
+      "path": "/licence-requirements-for-international-waters",
+      "title": "Licence requirements for international waters",
+      "section": "checkBeforeStart",
       "components": [
         {
-          "options": {
-            "list": "scuttlingElsewhereMethod"
-          },
-          "type": "RadiosField",
-          "name": "method",
-          "title": "How will the sinking be controlled?",
+          "type": "Para",
+          "content": "A licence may still be required  if outside of the MMO jurisdiction and the activity is:",
+          "options": {},
+          "schema": {}
+        },
+        {
+          "type": "Html",
+          "content": "<ul class=\"govuk-list  govuk-list--bullet\">\r\n  <li>\r\n    <b>Incineration</b>\r\n    <ul class=\"govuk-list  govuk-list--number\">\r\n      <li>if the incineration will take place on a British vessel, marine structure or floating container controlled from\r\na British vessel, aircraft or marine structure</li>\r\n      <li>if the substance or object for incineration was loaded in any part of the UK (except Scotland)</li>\r\n    </ul>\r\n  </li>\r\n  <li>\r\n    <b>Deposit</b>\r\n    <ul class=\"govuk-list  govuk-list--number\">\r\n      <li>if the deposit will be made from a British vessel, aircraft, marine structure or floating container</li>\r\n      <li>if the substance or object to be deposited was loaded in any part of the UK (except Scotland) or from the UK marine licensing area</li>\r\n    </ul>\r\n  </li>\r\n  <li>\r\n    <b>Scuttling</b>\r\n    <ul class=\"govuk-list  govuk-list--number\">\r\n      <li>if the sinking is controlled from a British vessel, aircraft or marine structure</li>\r\n      <li>if the vessel or container is towed or propelled for the purpose of its sinking from any part of the UK (except Scotland) or from the UK marine licensing area (unless\r\ntowing or propelling began outside of that\r\narea)</li>\r\n    </ul>\r\n</ul>",
+          "options": {},
           "schema": {}
         }
       ],
-      "next": [
-        {
-          "path": "/licence-required-no-exemption"
-        },
-        {
-          "path": "/elsewhere-in-the-world/scuttling/towed-or-propelled-from-uk",
-          "if": "method == 'other'"
-        }
-      ]
+      "next": []
     },
     {
-      "path": "/elsewhere-in-the-world/scuttling/towed-or-propelled-from-uk",
-      "section": "elsewhereScuttling",
+      "path": "/sea-and-waters-information",
+      "section": "checkBeforeStart",
       "components": [
         {
-          "options": {
-            "list": "scuttlingElsewhereTowedPropelled"
-          },
-          "type": "RadiosField",
-          "name": "towedOrPropelled",
-          "title": "Where will the vessel or container be towed or propelled from, for the purpose its sinking",
+          "type": "Para",
+          "content": "‘Waters’ includes:<br>\r\n<ul>\r\n<li>any area submerged at mean high water spring tide</li>\r\n<li>the tidal range of any estuary, river or channel</li>\r\n<li>any areas which are closed permanently or intermittently by a lock or other artificial means against the regular action of the tide, where seawater flows into or out from the area, either continuously or from time to time.</li>\r\n</ul>",
+          "options": {},
           "schema": {}
         }
       ],
-      "next": [
+      "next": [],
+      "title": "Sea and waters information"
+    },
+    {
+      "path": "/links-to-devolved-administrations-marine-management",
+      "title": "Links to devolved administrations marine management",
+      "section": "checkBeforeStart",
+      "components": [
         {
-          "path": "/licence-not-required",
-          "if": "towedOrPropelled == 'none'"
-        },
-        {
-          "path": "/licence-required-no-exemption"
+          "type": "Para",
+          "content": "<ul class=\"govuk-list\">\r\n  <li>\r\n    <a class=\"govuk-link\" href=\"#\">Welsh waters</a>\r\n  </li>\r\n  <li>\r\n    <a class=\"govuk-link\" href=\"#\">Scottish waters</a>\r\n  </li>\r\n  <li>\r\n    <a class=\"govuk-link\" href=\"#\">Northern Ireland Inshore waters</a>\r\n  </li>\r\n</ul>",
+          "options": {},
+          "schema": {}
         }
-      ]
+      ],
+      "next": []
     }
   ],
   "sections": [
