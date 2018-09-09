@@ -28,7 +28,13 @@ const manifest = {
           abortEarly: false
         }
       }
-    }
+    },
+    cache: [{
+      name: 'mongoDbCache',
+      engine: require('catbox-mongodb'),
+      uri: process.env.MONGO_URI,
+      partition: 'dfb-playground'
+    }]
   },
   register: {
     plugins: [
@@ -40,6 +46,12 @@ const manifest = {
       {
         plugin: 'yar',
         options: {
+          maxCookieSize: 0,
+          cache: {
+            cache: 'mongoDbCache',
+            expiresIn: 24 * 60 * 60 * 1000,
+            segment: 'session'
+          },
           cookieOptions: {
             password: process.env.COOKIE_PASSWORD,
             isSecure: false,
