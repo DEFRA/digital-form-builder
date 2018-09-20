@@ -2,7 +2,4 @@
 .vscode
 node_modules
 npm-debug.log
-logs
-server/views/template.njk
-server/views/components
 server/public/build
