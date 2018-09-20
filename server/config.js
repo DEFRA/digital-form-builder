@@ -6,7 +6,8 @@ const schema = {
   env: joi.string().valid('development', 'test', 'production').default('development'),
   ordnanceSurveyKey: joi.string().optional(),
   mongoUri: joi.string().uri().required(),
-  cookiePassword: joi.string().required().min(32)
+  cookiePassword: joi.string().required().min(32),
+  browserRefreshUrl: joi.string().optional()
 }
 
 // Build config
@@ -15,7 +16,8 @@ const config = {
   env: process.env.NODE_ENV,
   ordnanceSurveyKey: process.env.ORDNANCE_SURVEY_KEY,
   mongoUri: process.env.MONGO_URI,
-  cookiePassword: process.env.COOKIE_PASSWORD
+  cookiePassword: process.env.COOKIE_PASSWORD,
+  browserRefreshUrl: process.env.BROWSER_REFRESH_URL
 }
 
 // Validate config
