@@ -39,8 +39,8 @@ module.exports = {
     context: {
       appVersion: pkg.version,
       assetPath: '/assets',
-      serviceName: 'Service name',
-      pageTitle: 'Service name - GOV.UK',
+      serviceName: 'Digital form builder playground',
+      pageTitle: 'Digital form builder - GOV.UK',
       analyticsAccount: analyticsAccount,
       BROWSER_REFRESH_URL: config.browserRefreshUrl
     }
