@@ -19,28 +19,27 @@
   "author": "Department for Environment, Food and Rural Affairs <https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs>.",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "boom": "7.2.2",
-    "digital-form-builder-designer": "0.1.7",
-    "digital-form-builder-engine": "0.1.4",
-    "govuk-frontend": "2.3.0",
-    "hapi": "17.7.0",
-    "inert": "5.1.2",
-    "joi": "14.0.6",
-    "nunjucks": "3.1.4",
-    "pdfmake": "0.1.39",
-    "standard": "12.0.1",
-    "vision": "5.4.3",
-    "yar": "9.1.0"
+    "@hapi/boom": "^10.0.1",
+    "@hapi/hapi": "^21.3.9",
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "@hapi/yar": "^11.0.2",
+    "digital-form-builder-designer": "file:../digital-form-builder-designer",
+    "digital-form-builder-engine": "file:../digital-form-builder-engine",
+    "govuk-frontend": "5.3.1",
+    "joi": "17.13.0",
+    "nunjucks": "3.2.4",
+    "standard": "17.1.0"
   },
   "devDependencies": {
-    "blipp": "3.1.1",
-    "cheerio": "1.0.0-rc.2",
-    "code": "5.2.3",
+    "@hapi/code": "^9.0.3",
+    "@hapi/lab": "^25.2.0",
+    "blipp": "4.0.2",
+    "cheerio": "1.0.0-rc.12",
     "good": "8.1.1",
     "good-console": "7.1.0",
     "good-file": "6.0.1",
     "good-squeeze": "5.1.0",
-    "lab": "18.0.0",
-    "node-sass": "4.10.0"
+    "node-sass": "9.0.0"
   }
 }

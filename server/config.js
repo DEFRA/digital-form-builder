@@ -1,12 +1,12 @@
 const joi = require('joi')
 
 // Define config schema
-const schema = {
-  port: joi.number().default(3009),
+const schema = joi.object().keys({
+  port: joi.number().default(3008),
   env: joi.string().valid('development', 'test', 'production').default('development'),
   ordnanceSurveyKey: joi.string().optional(),
   browserRefreshUrl: joi.string().optional()
-}
+})
 
 // Build config
 const config = {
@@ -17,7 +17,7 @@ const config = {
 }
 
 // Validate config
-const result = joi.validate(config, schema, {
+const result = schema.validate(config, {
   abortEarly: false
 })
 

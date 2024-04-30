@@ -1,4 +1,4 @@
-@import "node_modules/govuk-frontend/all";
+@import "node_modules/govuk-frontend/dist/govuk/all";
 @import "node_modules/digital-form-builder-designer/client/index";
 
 .nojs-hidden {
@@ -25,7 +25,6 @@
 }
 
 .govuk-prose-scope {
-
   // @extend inheritance
 
   // Contextual heading and paragraph combinations are inherited

@@ -4,7 +4,7 @@ const pkg = require('../../package.json')
 const analyticsAccount = config.analyticsAccount
 
 module.exports = {
-  plugin: require('vision'),
+  plugin: require('@hapi/vision'),
   options: {
     engines: {
       html: {
@@ -30,8 +30,8 @@ module.exports = {
     },
     path: [
       'server/views',
-      'node_modules/govuk-frontend/',
-      'node_modules/govuk-frontend/components/',
+      'node_modules/govuk-frontend/dist/govuk',
+      'node_modules/govuk-frontend/dist/govuk/components/',
       'node_modules/digital-form-builder-engine/views',
       'node_modules/digital-form-builder-designer/views'
     ],

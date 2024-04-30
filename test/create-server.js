@@ -9,9 +9,9 @@ module.exports = (data) => {
   const manifest = {
     register: {
       plugins: [
-        'inert',
+        '@hapi/inert',
         {
-          plugin: 'vision',
+          plugin: '@hapi/vision',
           options: {
             engines: {
               njk: {
