@@ -41,7 +41,7 @@ module.exports = {
       assetPath: '/assets',
       serviceName: 'Service name',
       pageTitle: 'Service name - GOV.UK',
-      analyticsAccount: analyticsAccount,
+      analyticsAccount,
       BROWSER_REFRESH_URL: config.browserRefreshUrl
     }
   }

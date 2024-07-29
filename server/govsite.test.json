@@ -1,0 +1,59 @@
+{
+  "groups": [],
+  "conditions": [],
+  "pages": [
+    {
+      "path": "/",
+      "components": [
+        {
+          "type": "TextField",
+          "name": "location",
+          "title": "Enter location",
+          "hint": "Start typing any location or address in England",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "next": [],
+      "title": "Enter location"
+    },
+    {
+      "path": "/national",
+      "title": "Flood risk for England",
+      "components": [
+        {
+          "type": "TextField",
+          "name": "location",
+          "title": "Enter location",
+          "hint": "Start typing any location or address in England",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "next": [],
+      "section": "floodRisk",
+      "condition": "location == 'asd'"
+    },
+    {
+      "path": "/three",
+      "title": "Flood risk for England",
+      "components": [
+        {
+          "type": "InsetText",
+          "content": "<p>\r\n  Get flood warnings by phone, text or email.\r\n  <a href=\"https://www.gov.uk/sign-up-for-flood-warnings\">Sign up for flood warnings</a>.\r\n</p>\r\n<p>Some places may experience flooding from other sources in the future.\r\n  <a href=\"https://flood-warning-information.service.gov.uk/long-term-flood-risk\">\r\n    View long term flood risk information\r\n  </a>.\r\n</p>",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "next": [],
+      "section": "floodRisk"
+    }
+  ],
+  "sections": [
+    {
+      "name": "floodRisk",
+      "title": "Flood risk"
+    }
+  ],
+  "lists": []
+}

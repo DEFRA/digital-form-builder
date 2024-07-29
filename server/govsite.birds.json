@@ -1,0 +1,792 @@
+{
+  "pages": [
+    {
+      "path": "/whats-your-name",
+      "title": "What's your name?",
+      "components": [
+        {
+          "type": "TextField",
+          "name": "xxxx23",
+          "title": "Applicant's name",
+          "options": {},
+          "schema": {},
+          "nameHasError": false
+        }
+      ],
+      "next": [
+        {
+          "path": "/whats-your-phone-number"
+        }
+      ]
+    },
+    {
+      "path": "/whats-your-phone-number",
+      "title": "What's your phone number?",
+      "components": [
+        {
+          "name": "jgaxUB",
+          "options": {},
+          "schema": {},
+          "type": "TelephoneNumberField",
+          "title": "Telephone number "
+        }
+      ],
+      "next": [
+        {
+          "path": "/whats-your-email-address"
+        }
+      ]
+    },
+    {
+      "path": "/whats-your-email-address",
+      "title": "What's your email address?",
+      "components": [
+        {
+          "name": "WbavfS",
+          "options": {
+            "classes": "govuk-!-width-two-thirds"
+          },
+          "schema": {},
+          "type": "EmailAddressField",
+          "title": "Email address "
+        }
+      ],
+      "next": [
+        {
+          "path": "/will-the-activity-you-plan-to-undertake-located-on-or-within-13-kilometres-of-an-airfield"
+        }
+      ]
+    },
+    {
+      "path": "/will-the-activity-you-plan-to-undertake-located-on-or-within-13-kilometres-of-an-airfield",
+      "title": "Will the activity you plan to undertake located on or within 13 kilometres of an airfield?",
+      "components": [
+        {
+          "name": "HnVuHJ",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "activity you want to carry out at or within a 15 kilometre radius of an airport"
+        }
+      ],
+      "next": [
+        {
+          "path": "/which-wild-birds-do-you-want-control"
+        },
+        {
+          "path": "/control-birds-at-an-airfield"
+        }
+      ]
+    },
+    {
+      "path": "/control-birds-at-an-airfield",
+      "title": "Control birds at an airfield",
+      "components": [
+        {
+          "name": "asalNW",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">If you need to control birds at an airfield, check if the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/birds-licence-to-kill-or-take-them-for-air-safety-purposes\">air safety class licence CL12</a> covers your circumstances.</p>\n\n<p class=\"govuk-body\">If the air safety class licence CL12 does not cover your circumstances, you can submit a screening form to start applying for this licence.</p>\n"
+        }
+      ],
+      "next": [],
+      "condition": "isNearAirfield"
+    },
+    {
+      "path": "/which-wild-birds-do-you-want-control",
+      "title": "Which wild birds do you want control?",
+      "components": [
+        {
+          "name": "bNhVtH",
+          "options": {
+            "list": "JdDYiW"
+          },
+          "schema": {},
+          "type": "CheckboxesField",
+          "title": "Which wild birds do you want to control?",
+          "hint": "Select all relevant species",
+          "values": {
+            "type": "listRef"
+          }
+        }
+      ],
+      "next": [
+        {
+          "path": "/reasons-for-applying"
+        },
+        {
+          "path": "/what-is-the-other-species"
+        }
+      ]
+    },
+    {
+      "path": "/what-is-the-other-species",
+      "title": "What is the other species?",
+      "components": [
+        {
+          "name": "iyshUc",
+          "options": {},
+          "schema": {},
+          "type": "TextField",
+          "title": "What is the other species?"
+        }
+      ],
+      "condition": "includesOtherBirds",
+      "next": [
+        {
+          "path": "/reasons-for-applying"
+        }
+      ]
+    },
+    {
+      "path": "/reasons-for-applying",
+      "title": "Reasons for applying",
+      "components": [
+        {
+          "name": "YpVSBm",
+          "options": {
+            "list": "hsujdZ"
+          },
+          "schema": {},
+          "type": "RadiosField",
+          "title": "Why do you need to apply for a licence to control wild birds?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/what-do-you-need-to-conserve"
+        },
+        {
+          "path": "/public-health-and-safety"
+        },
+        {
+          "path": "/spread-of-disease"
+        },
+        {
+          "path": "/serious-damage"
+        }
+      ]
+    },
+    {
+      "path": "/what-do-you-need-to-conserve",
+      "title": "What do you need to conserve?",
+      "components": [
+        {
+          "name": "TmXaiv",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Tell what you want to conserve by controlling the birds, this could be:</p> <ul class=\"govuk-list govuk-list--bullet\"> <li>another wild birds</li> <li>another animal</li> <li>plants or vegetation</li> </ul>"
+        },
+        {
+          "name": "OpPiON",
+          "options": {},
+          "schema": {},
+          "type": "MultilineTextField",
+          "title": "What do you want to conserve?",
+          "hint": "List the species or habitat that you're aiming to conserve through the control of the selected wild birds.\n\n For example, 'curlew'."
+        }
+      ],
+      "next": [
+        {
+          "path": "/is-the-species-or-habitat-you-need-to-conserve-of-recognised-conservation-concern"
+        }
+      ],
+      "condition": "isConservation"
+    },
+    {
+      "path": "/is-the-species-or-habitat-you-need-to-conserve-of-recognised-conservation-concern",
+      "title": "Is the species or habitat you need to conserve of recognised conservation concern?",
+      "components": [
+        {
+          "name": "pZPBAb",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "Guidance"
+        },
+        {
+          "name": "KIqaOS",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Is the species or habitat you need to conserve of registered concern?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/is-the-species-you-need-to-control-is-impacting-on-the-species-or-habitat-to-conserve"
+        },
+        {
+          "path": "/is-there-evidence-that-the-species-or-habitat-is-particularly-vulnerable-at-the-site-where-it-exists"
+        }
+      ],
+      "condition": "isConservation"
+    },
+    {
+      "path": "/is-there-evidence-that-the-species-or-habitat-is-particularly-vulnerable-at-the-site-where-it-exists",
+      "title": "Is there evidence that the species or habitat is particularly vulnerable at the site where it exists?",
+      "components": [
+        {
+          "name": "ExqqTQ",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Evidence of species or habitat being vulnerable where it exists"
+        }
+      ],
+      "next": [
+        {
+          "path": "/is-the-species-you-need-to-control-is-impacting-on-the-species-or-habitat-to-conserve"
+        }
+      ],
+      "condition": "isNotRegisteredConservationConcern"
+    },
+    {
+      "path": "/is-the-species-you-need-to-control-is-impacting-on-the-species-or-habitat-to-conserve",
+      "title": "Is the species you need to control is impacting on the species or habitat to conserve?",
+      "components": [
+        {
+          "name": "mIeaHE",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "Guidance"
+        },
+        {
+          "name": "bYSEPv",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Is the species you need to control having an impact on the species or habitat you want to conserve?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/wider-measures-been-taken-to-conserve-the-species-or-habitat"
+        },
+        {
+          "path": "/end-card"
+        }
+      ],
+      "condition": "isConservation"
+    },
+    {
+      "path": "/wider-measures-been-taken-to-conserve-the-species-or-habitat",
+      "title": "Wider measures been taken to  conserve the species or habitat",
+      "components": [
+        {
+          "name": "yAlYyt",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "f"
+        },
+        {
+          "name": "UKFUoY",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Are wider measures being taken to conserve the species or habitat?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/non-lethal-alternatives"
+        },
+        {
+          "path": "/wider-measures"
+        }
+      ],
+      "condition": "isConservationConcern"
+    },
+    {
+      "path": "/wider-measures",
+      "title": "Wider measures",
+      "components": [
+        {
+          "name": "zrrrLB",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "f"
+        }
+      ],
+      "next": [],
+      "condition": "!areWiderMeasuresBeingTaken"
+    },
+    {
+      "path": "/non-lethal-alternatives",
+      "title": "Non-lethal alternatives ",
+      "components": [
+        {
+          "name": "UhPzQp",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Without evidence of having at least considered alternative, non-lethal measures, and without explanations of why these were not attempted or why they were ineffective, it is unlikely we would issue a licence.</p>"
+        },
+        {
+          "name": "kOmePe",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Would non-lethal alternatives be ineffective alone in resolving the situation?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/non-lethal-actions-UJCJbT"
+        },
+        {
+          "path": "/summary"
+        }
+      ]
+    },
+    {
+      "path": "/non-lethal-actions-UJCJbT",
+      "title": "Non-lethal actions",
+      "components": [
+        {
+          "name": "cOaVPJ",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "\n<p class=\"govuk-body\"> YYou need to have considered non-lethal alternatives to dealing with your problem before you can apply for a licence to control wild birds. </p>\n\n<p class=\"govuk-body\">Read our <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/wildlife-management-advice-notice-legal-measures-for-managing-wild-birds-wml-gu01\">guidance on the methods that can be used to help manage wild birds without a licence</a>.</p>\n\n"
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/public-health-and-safety",
+      "title": "Public  health and safety",
+      "components": [
+        {
+          "name": "qclnUs",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">public nuisance means….</p> <p class=\"govuk-body\">For example, it likely that we would issue a licence if people are at risk of injury or harm, either directly or indirectly from the species' behaviour.</p> <p class=\"govuk-body\">It is unlikely that we would issue a licence to control wild birds due to their noisy behaviour, mess, scavenging or dive-bombing of people to defend their chicks.</p>"
+        },
+        {
+          "name": "FlhmvM",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Are you preserving public health or safety?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/evidence-of-a-public-health-or-safety-risk"
+        }
+      ]
+    },
+    {
+      "path": "/evidence-of-a-public-health-or-safety-risk",
+      "title": "Evidence of  a public health or safety risk",
+      "components": [
+        {
+          "name": "RKBVID",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">The presence of the birds is not, in itself, a reason for lethal control. For example, large gulls are increasingly dependent upon living in built-up areas, and expected to occur and exhibit normal behaviour in such areas. You'll need to provide evidence linking the species you need to control and to a genuine risk to either individual persons or to the wider public.</p>"
+        },
+        {
+          "name": "kbtxja",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Could you provide evidence that the species you want to control is causing or likely to cause a public health or safety issue?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/have-you-considered-or-tried-other-appropriate-measures"
+        }
+      ]
+    },
+    {
+      "path": "/have-you-considered-or-tried-other-appropriate-measures",
+      "title": "Have you considered or tried other appropriate measures?",
+      "components": [
+        {
+          "name": "HusevL",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "For example, the legal, non-lethal measures taken already or which you will use alongside any licensed action. Include when, how often and who will do the work. A strong application will show that you have tried a range of non-lethal solutions. "
+        },
+        {
+          "name": "gRaPsR",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Have other apprioprate measures been considered or taken?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/non-lethal-alternatives"
+        },
+        {
+          "path": "/appropriate-measures"
+        }
+      ]
+    },
+    {
+      "path": "/spread-of-disease",
+      "title": "Spread of disease",
+      "components": [
+        {
+          "name": "TFSwMU",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": " <p class=\"govuk-body\">Applications to control wild birds due to concerns over spread of disease are typically associated with disease risks to livestock, companion animals or to other biota.</p> <br><br><p class=\"govuk-body\"> If you believe contact with wild birds, their nests, or droppings is a public health risk, go back to previous page and select \"Preserving public health or safety\"  for the reason you are applying</p>"
+        },
+        {
+          "name": "myHlyc",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": " Do you want control wild birds due to concerns over  the spread of disease?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/evidence-of-spread-of-disease-concern"
+        }
+      ]
+    },
+    {
+      "path": "/evidence-of-spread-of-disease-concern",
+      "title": "Evidence of spread of disease concern",
+      "components": [
+        {
+          "name": "AcMxPl",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">The presence of the birds is not, in itself, a reason for lethal control. You'll need to provide evidence linking the species you need to control to a genuine disease risk to either livestock, companion animals or other biota.</p> <p class=\"govuk-body\">This could include evidence such as photographic evidence, expert opinion, risk assessments and recorded observations of the bird's behaviour.</p>"
+        },
+        {
+          "name": "Inzxoe",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Could you provide evidence that the species is causing or is likely to cause a disease issue?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/have-you-considered-or-tried-other-appropriate-measures"
+        }
+      ]
+    },
+    {
+      "path": "/serious-damage",
+      "title": "Serious damage",
+      "components": [
+        {
+          "name": "WUBXPe",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Licences are unlikely to be granted in cases of minor damage. These applications are more likely to be considered as nuisance and the use of non-lethal deterrents and alternative measures will typically be considered as an appropriate way to manage the problem.</p>"
+        },
+        {
+          "name": "ZqRgHO",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": "Is the damage being caused or likely to be caused more serious than nuisance or minor damage? "
+        }
+      ],
+      "next": [
+        {
+          "path": "/could-you-provide-evidence-that-species-you-want-to-control-is-causing-or-is-likely-to-cause-serious-damage"
+        },
+        {
+          "path": "/end-card"
+        }
+      ]
+    },
+    {
+      "path": "/could-you-provide-evidence-that-species-you-want-to-control-is-causing-or-is-likely-to-cause-serious-damage",
+      "title": "Could you provide evidence that species you want to control is causing or is likely to cause serious damage?",
+      "components": [
+        {
+          "name": "pfduIJ",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "hint": "This could include evidence such as:\nphotographic evidence \nrecords / diary observations (such as predation events, numbers of livestock lost or extent of crop damaged) \nfinancial records showing losses incurred\nObservations on size of local bird flock and behaviour",
+          "title": "Evidence of serious damage"
+        }
+      ],
+      "next": [
+        {
+          "path": "/appropriate-measures-to-prevent-serious-damage"
+        }
+      ]
+    },
+    {
+      "path": "/appropriate-measures-to-prevent-serious-damage",
+      "title": " Appropriate measures to prevent serious damage",
+      "components": [
+        {
+          "name": "fghRzW",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">The legal, non-lethal measures taken already or which you will use alongside any licensed action. Include when, how often and who will do the work. A strong application will show that you have tried a range of non-lethal solutions.</p> <br><br> <p class=\"govuk-body\">For example, measures to manage surrounding habitat to reduce suitability for the species you propose to control or management strategies to reduce the risk of damage such as enclosed feeding options.</p>"
+        },
+        {
+          "name": "HYPnzA",
+          "options": {},
+          "schema": {},
+          "type": "YesNoField",
+          "title": " Have you taken or considered other appropriate measures to prevent serious damage?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/non-lethal-alternatives"
+        },
+        {
+          "path": "/appropriate-measures"
+        }
+      ]
+    },
+    {
+      "path": "/end-card",
+      "title": "End card",
+      "components": [
+        {
+          "name": "OCcMYE",
+          "options": {},
+          "schema": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">You are not eligible for a licence to control birds. You can either...</p>\n"
+        }
+      ],
+      "next": []
+    },
+    {
+      "path": "/appropriate-measures",
+      "title": " Appropriate measures",
+      "components": [],
+      "next": []
+    },
+    {
+      "title": "Summary",
+      "path": "/summary",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "next": []
+    }
+  ],
+  "conditions": [
+    {
+      "name": "isNearAirfield",
+      "value": "HnVuHJ == true"
+    },
+    {
+      "name": "includesOtherBirds",
+      "value": "'Other species' in bNhVtH"
+    },
+    {
+      "name": "isDisease",
+      "value": "YpVSBm == 'disease'"
+    },
+    {
+      "name": "isSafety",
+      "value": "YpVSBm == 'safety'"
+    },
+    {
+      "name": "isConservation",
+      "value": "YpVSBm == 'conservation'"
+    },
+    {
+      "name": "isDamage",
+      "value": "YpVSBm == 'damage'"
+    },
+    {
+      "name": "isNotRegisteredConservationConcern",
+      "value": "KIqaOS == false"
+    },
+    {
+      "name": "isConservationConcern",
+      "value": "bYSEPv == true"
+    },
+    {
+      "name": "areWiderMeasuresBeingTaken",
+      "value": "UKFUoY == true"
+    }
+  ],
+  "sections": [
+    {
+      "name": "section",
+      "title": "Section title"
+    }
+  ],
+  "lists": [
+    {
+      "title": "Reasons for applying",
+      "name": "hsujdZ",
+      "type": "string",
+      "items": [
+        {
+          "text": "prevent spread of disease",
+          "value": "disease"
+        },
+        {
+          "text": "preserve public health or safety",
+          "value": "safety"
+        },
+        {
+          "text": "conserve wild birds, other animals or plants",
+          "value": "conservation"
+        },
+        {
+          "text": "prevent serious damage to livestock, animal feed, crops, growing timber, fisheries or inland waters",
+          "value": "damage"
+        }
+      ]
+    },
+    {
+      "title": "Wild birds",
+      "name": "JdDYiW",
+      "type": "string",
+      "items": [
+        {
+          "text": "Lesser Black-back Gulls",
+          "value": "Lesser Black-back Gulls"
+        },
+        {
+          "text": "Herring Gulls",
+          "value": "Herring Gulls"
+        },
+        {
+          "text": "Carrion Crow",
+          "value": "Carrion Crow"
+        },
+        {
+          "text": "Magpie",
+          "value": "Magpie"
+        },
+        {
+          "text": "Jay",
+          "value": "Jay"
+        },
+        {
+          "text": "Rook",
+          "value": "Rook"
+        },
+        {
+          "text": "Jackdaw",
+          "value": "Jackdaw"
+        },
+        {
+          "text": "Woodpigeon",
+          "value": "Woodpigeon"
+        },
+        {
+          "text": "Egyptian Geese",
+          "value": "Egyptian Geese"
+        },
+        {
+          "text": "Starling",
+          "value": "Starling"
+        },
+        {
+          "text": "Mallard",
+          "value": "Mallard"
+        },
+        {
+          "text": "Greylag goose",
+          "value": "Greylag goose"
+        },
+        {
+          "text": "Other species",
+          "value": "Other species"
+        }
+      ]
+    },
+    {
+      "title": "Public health or safety ",
+      "name": "PObXDA",
+      "type": "string",
+      "items": [
+        {
+          "text": "Herring gull",
+          "value": "Herring gull"
+        },
+        {
+          "text": "Lesser blackbacked Gull",
+          "value": "Lesser blackbacked Gull"
+        },
+        {
+          "text": "Woodpigeon",
+          "value": "Woodpigeon"
+        },
+        {
+          "text": "Collared dove",
+          "value": "Collared dove"
+        },
+        {
+          "text": "Starling",
+          "value": "Starling"
+        },
+        {
+          "text": "Magpie",
+          "value": "Magpie"
+        },
+        {
+          "text": "Carrion crow",
+          "value": "Carrion crow"
+        },
+        {
+          "text": "Rook",
+          "value": "Rook"
+        },
+        {
+          "text": "Mallard",
+          "value": "Mallard"
+        },
+        {
+          "text": "House sparrow",
+          "value": "House sparrow"
+        },
+        {
+          "text": "Other",
+          "value": "Other"
+        }
+      ]
+    },
+    {
+      "title": "Conserve",
+      "name": "lwteBn",
+      "type": "string",
+      "items": [
+        {
+          "text": "A Bird",
+          "value": "Bird"
+        },
+        {
+          "text": "Plant or vegetation",
+          "value": "Plant"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "oap",
+      "title": "Pensioners"
+    }
+  ]
+}

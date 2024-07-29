@@ -22,14 +22,15 @@
     "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.3.9",
     "@hapi/inert": "^7.1.0",
+    "@hapi/log": "^2.0.1",
     "@hapi/vision": "^7.0.3",
     "@hapi/yar": "^11.0.2",
-    "digital-form-builder-designer": "file:../digital-form-builder-designer",
-    "digital-form-builder-engine": "file:../digital-form-builder-engine",
-    "govuk-frontend": "5.3.1",
-    "joi": "17.13.0",
-    "nunjucks": "3.2.4",
-    "standard": "17.1.0"
+    "digital-form-builder-designer": "^0.1.7",
+    "digital-form-builder-engine": "^0.1.4",
+    "govuk-frontend": "^5.3.1",
+    "joi": "^17.13.3",
+    "nunjucks": "^3.2.4",
+    "standard": "^17.1.0"
   },
   "devDependencies": {
     "@hapi/code": "^9.0.3",
