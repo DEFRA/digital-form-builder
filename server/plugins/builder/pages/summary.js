@@ -14,13 +14,19 @@ class SummaryViewModel {
       model.pages.forEach(p => {
         if (p.section === section) {
           p.components.formItems.forEach(component => {
-            items.push({
-              name: component.name,
-              path: component.path,
-              label: component.title,
-              value: component.getDisplayStringFromState(sectionState),
-              url: `${p.path}?returnUrl=${page.path}`
-            })
+            const isRequired = p.condition
+              ? model.conditions[p.condition].fn(state)
+              : true
+
+            if (isRequired) {
+              items.push({
+                name: component.name,
+                path: component.path,
+                label: component.title,
+                value: component.getDisplayStringFromState(sectionState),
+                url: `${p.path}?returnUrl=${page.path}`
+              })
+            }
           })
         }
       })
