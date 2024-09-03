@@ -1,0 +1,842 @@
+{
+  "groups": [],
+  "pages": [
+    {
+      "title": "What's the name of the applicant?",
+      "path": "/whats-the-name-of-the-applicant",
+      "components": [
+        {
+          "name": "Jhimsh",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Enter the name of the person applying for the county parish holding (CPH) number.</p>",
+          "schema": {}
+        },
+        {
+          "name": "TKsWbP",
+          "options": {},
+          "type": "TextField",
+          "title": "Title"
+        },
+        {
+          "name": "iyutEh",
+          "options": {},
+          "type": "TextField",
+          "title": "First name",
+          "schema": {}
+        },
+        {
+          "name": "GDYfTS",
+          "options": {},
+          "type": "TextField",
+          "title": "Last name",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/whats-your-home-address" }]
+    },
+    {
+      "path": "/whats-your-home-address",
+      "title": "What's your home address?",
+      "components": [
+        {
+          "name": "hpmkrN",
+          "options": {},
+          "type": "UkAddressField",
+          "title": "Address",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/whats-your-telephone-number" }]
+    },
+    {
+      "path": "/whats-your-telephone-number",
+      "title": "What's your telephone number?",
+      "components": [
+        {
+          "name": "fMHViw",
+          "options": {},
+          "type": "TelephoneNumberField",
+          "hint": "Enter a telephone number so the Rural Payments Agency (RPA) can contact you if they need to discuss your application.",
+          "title": "Telephone number",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/whats-your-second-telephone-number-optional" }]
+    },
+    {
+      "path": "/whats-your-second-telephone-number-optional",
+      "title": "What's your second telephone number? (optional)",
+      "components": [
+        {
+          "name": "MyGRlh",
+          "options": { "required": false },
+          "type": "TelephoneNumberField",
+          "title": "Second telephone number",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/whats-your-email-address" }]
+    },
+    {
+      "path": "/whats-your-email-address",
+      "title": "What's your email address?",
+      "components": [
+        {
+          "name": "uZcVcc",
+          "options": {},
+          "type": "EmailAddressField",
+          "title": "Email address",
+          "hint": "RPA will email your CPH number to you.",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/business-name" }]
+    },
+    {
+      "path": "/business-name",
+      "title": "Business name",
+      "components": [
+        {
+          "name": "azvqQo",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">RPA needs to register you as a business on their system (the Rural Payments service) before they can give you a CPH number. They must do this even if you keep livestock as pets or for a hobby.\n<br>\n<br>\nIf you do not have a business name, enter your full name.</p>",
+          "schema": {}
+        },
+        {
+          "name": "jFlrpY",
+          "options": {},
+          "type": "TextField",
+          "title": "What's the name of your business?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        { "path": "/is-your-business-address-the-same-as-your-home-address" }
+      ]
+    },
+    {
+      "path": "/is-your-business-address-the-same-as-your-home-address",
+      "title": "Is your business address the same as your home address?",
+      "components": [
+        {
+          "name": "CMTiOK",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Is your business address the same as your home address?",
+          "hint": "If you do not have a business, select 'yes'.",
+          "schema": {}
+        }
+      ],
+      "next": [
+        { "path": "/legal-status-of-your-business" },
+        { "path": "/whats-your-business-address" }
+      ]
+    },
+    {
+      "path": "/whats-your-business-address",
+      "title": "What's your business address?",
+      "condition": "businessAddressNotHomeAddress",
+      "components": [
+        {
+          "name": "SJmeaZ",
+          "options": {},
+          "type": "UkAddressField",
+          "title": "What's your business address?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/legal-status-of-your-business" }]
+    },
+    {
+      "path": "/legal-status-of-your-business",
+      "title": "Legal status of your business",
+      "components": [
+        {
+          "name": "KVSTXs",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">RPA needs the legal status of your business to register you on the Rural Payments service.\n<br>\n<br>\nIf you do not have a business, select 'sole proprietorship'.\n<br>\n<br>\nRead more about <a href=\"https://www.gov.uk/set-up-business\" target=\"_blank\">registering a business (opens in new tab)</a> or <a href=\"https://www.gov.uk/guidance/charity-types-how-to-choose-a-structure\" target=\"_blank\">find out more about charity types (opens in new tab)</a>. If you're not sure, seek professional advice.</p>",
+          "schema": {}
+        },
+        {
+          "name": "yHQAol",
+          "options": {
+            "list": "ihwVmQ"
+          },
+          "type": "RadiosField",
+          "title": "What's the legal status of your business?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/companies-house" }]
+    },
+    {
+      "path": "/companies-house",
+      "title": "Companies House",
+      "components": [
+        {
+          "name": "AbMavV",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Your business should be registered with Companies House if it's a:</p>",
+          "schema": {}
+        },
+        {
+          "name": "rJIKfO",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Is your business registered with Companies House?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        { "path": "/whats-your-companies-house-number" },
+        { "path": "/charity-commission" }
+      ]
+    },
+    {
+      "path": "/whats-your-companies-house-number",
+      "title": "What's your Companies House number?",
+      "condition": "registeredCH",
+      "components": [
+        {
+          "name": "nNNsgO",
+          "options": {},
+          "type": "TextField",
+          "title": "Companies House number",
+          "hint": "The number will be on any documents you have received from Companies House. It's either an 8-digit number or 2 letters followed by a 6-digit number, for example, 03256178 or AC032561.",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/charity-commission" }]
+    },
+    {
+      "path": "/charity-commission",
+      "title": "Charity Commission",
+      "components": [
+        {
+          "name": "oMnOYh",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\"><a href=\"https://www.gov.uk/setting-up-charity/register-your-charity\" target=\"_blank\"\">Find out when you must register your charity (opens in new tab).</a>\n<br><br></p>",
+          "schema": {}
+        },
+        {
+          "name": "DRrBSz",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Is your charity registered with the Charity Commission?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        { "path": "/charity-number" },
+        { "path": "/business-type" }
+      ]
+    },
+    {
+      "path": "/charity-number",
+      "title": "Charity number",
+      "condition": "registeredCC",
+      "components": [
+        {
+          "name": "uHmVat",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\"><a href=\"https://register-of-charities.charitycommission.gov.uk/charity-search\" target=\"_blank\">Search the register of charities (opens in new tab)</a> to find your charity number.</p>",
+          "schema": {}
+        },
+        {
+          "name": "bSobIF",
+          "options": {},
+          "type": "TextField",
+          "title": "What's your charity number?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/business-type" }]
+    },
+    {
+      "path": "/business-type",
+      "title": "Business type",
+      "components": [
+        {
+          "name": "AoofuF",
+          "options": {
+            "list": "ycOtLx"
+          },
+          "type": "RadiosField",
+          "title": "Business type",
+          "hint": "Select the main purpose of your business. If you're a farmer and you keep livestock, select 'farmer'.",
+          "schema": {}
+        }
+      ],
+      "next": [
+        { "path": "/what-type-of-business-do-you-have" },
+        { "path": "/what-livestock-will-you-keep" }
+      ]
+    },
+    {
+      "path": "/what-type-of-business-do-you-have",
+      "title": "What type of business do you have?",
+      "condition": "businessTypeIsOther",
+      "components": [
+        {
+          "name": "hCxIFa",
+          "options": {},
+          "type": "TextField",
+          "title": "What type of business do you have?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/what-livestock-will-you-keep" }]
+    },
+    {
+      "path": "/what-livestock-will-you-keep",
+      "title": "What livestock will you keep?",
+      "components": [
+        {
+          "type": "CheckboxesField",
+          "title": "What livestock do you keep?",
+          "name": "dgTGFt",
+          "options": {
+            "list": "CoRNqi"
+          },
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/is-your-business-a-market-showground-or-zoo"
+        },
+        { "path": "/what-do-you-do" }
+      ]
+    },
+    {
+      "path": "/what-do-you-do",
+      "title": "What do you do?",
+      "condition": "keepOtherLivestock",
+      "components": [
+        {
+          "name": "nTEdlT",
+          "options": {},
+          "type": "TextField",
+          "title": "What do you do?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/is-your-business-a-market-showground-or-zoo" }]
+    },
+    {
+      "path": "/is-your-business-a-market-showground-or-zoo",
+      "title": "Is your business a market, showground or zoo?",
+      "components": [
+        {
+          "name": "jLxphO",
+          "options": {
+            "list": "rieXPV"
+          },
+          "type": "RadiosField",
+          "title": "Is your business a market, showground or zoo?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/when-livestock-will-arrive" }]
+    },
+    {
+      "path": "/when-livestock-will-arrive",
+      "title": "When livestock will arrive",
+      "components": [
+        {
+          "name": "NRlngf",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Tell us when livestock or animal by-products will arrive. This date must be no more than 6 weeks from today's date. If they will arrive later, do not apply for your CPH number now.\n<br><br>\nIf you do not know when livestock or animal by-products will arrive, give an estimate. If they have already arrived, you can put a date in the past.\n<br><br>\nRPA need to know this so they can prioritise your application.</p>",
+          "schema": {}
+        },
+        {
+          "name": "uogTBM",
+          "options": {},
+          "type": "DatePartsField",
+          "title": "What's the date livestock or animal by-products will arrive?",
+          "hint": "For example, 27 9 2023. If you keep both livestock and animal by-products, tell us the date the first one will arrive.",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/will-you-keep-livestock-or-use-animal-by-products-at-your-home-address"
+        }
+      ]
+    },
+    {
+      "path": "/will-you-keep-livestock-or-use-animal-by-products-at-your-home-address",
+      "title": "Will you keep livestock or use animal by-products at your home address?",
+      "components": [
+        {
+          "name": "QcfaVC",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Will you keep livestock or use animal by-products at your home address?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/will-you-keep-livestock-or-use-animal-by-products-at-your-business-address"
+        },
+        { "path": "/national-grid-field-number-for-where-youll-keep-livestock" }
+      ]
+    },
+    {
+      "path": "/will-you-keep-livestock-or-use-animal-by-products-at-your-business-address",
+      "title": "Will you keep livestock or use animal by-products at your business address?",
+      "condition": "noLivestockAtHomeAddress",
+      "components": [
+        {
+          "name": "RiEsSm",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Will you keep livestock or use animal by-products at your business address?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/national-grid-field-number-for-where-youll-keep-livestock"
+        },
+        {
+          "path": "/whats-the-address-where-youll-keep-livestock-or-use-animal-by-products"
+        }
+      ]
+    },
+    {
+      "path": "/whats-the-address-where-youll-keep-livestock-or-use-animal-by-products",
+      "title": "What's the address where you'll keep livestock or use animal by-products?",
+      "condition": "noLivestockAtBusinessAddress",
+      "components": [
+        {
+          "name": "sDJyOK",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">This will help trace the animals to prevent and contain disease</p>."
+        },
+        {
+          "name": "PXRMtw",
+          "options": {},
+          "type": "UkAddressField",
+          "title": "What's the address where you'll keep livestock or use animal by-products?"
+        }
+      ],
+      "next": [
+        { "path": "/national-grid-field-number-for-where-youll-keep-livestock" }
+      ]
+    },
+    {
+      "path": "/national-grid-field-number-for-where-youll-keep-livestock",
+      "title": "National Grid field number for where you'll keep livestock",
+      "components": [
+        {
+          "name": "GIGZXr",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">RPA need the National Grid field number for the main area where you'll keep livestock. For example, if you're a:</p>",
+          "schema": {}
+        },
+        {
+          "name": "moXMAe",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">If your business uses animal by-products, this will be for the premises where you use them.\n<br><br>\nUse the <a href=\"https://magic.defra.gov.uk/\" target=\"_blank\">MAGIC map (opens in new tab)</a> to find the National Grid field numbers for your land or buildings. Follow these instructions:\n\n<ol type=\"1\">\n<li>1. Select ‘Get Started’.</li>\n<li>2. Search for a postcode or place.<br></li>\n<li>3. Using the map, locate the land or building. Use the +/- icons to zoom in and out.<br></li>\n<li>4. In the top toolbar, select the fourth icon along ('Where am I?') - it looks like a target.</li>\n<li>5. Click on the land or building.<br></li>\n<li>6. A pop-up box will appear showing the land details for this location. The National Grid field number is the fourth number down and comes after the ‘Grid Ref’ (Ordnance Survey grid reference). It’s made up of 2 letters and 8 numbers, for example, AB 1234 5678.</li>\n</ol</p>>"
+        },
+        {
+          "name": "sLRVWq",
+          "options": {},
+          "type": "TextField",
+          "title": "What's the National Grid field number for the main area where you'll keep livestock or use animal by-products?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/will-you-keep-livestock-or-use-animal-by-products-anywhere-else"
+        }
+      ]
+    },
+    {
+      "path": "/will-you-keep-livestock-or-use-animal-by-products-anywhere-else",
+      "title": "Will you keep livestock or use animal by-products anywhere else?",
+      "components": [
+        {
+          "name": "MBoevI",
+          "options": {},
+          "type": "YesNoField",
+          "hint": "RPA needs to know about any other land or buildings you'll use to keep livestock.",
+          "title": "Will you keep livestock or use animal by-products anywhere else?",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/national-grid-field-number-for-where-youll-keep-livestock-2"
+        },
+        { "path": "/do-you-own-the-land" }
+      ]
+    },
+    {
+      "path": "/national-grid-field-number-for-where-youll-keep-livestock-2",
+      "title": "National Grid field number for where you'll keep livestock",
+      "condition": "keepLivestockElsewhere",
+      "components": [
+        {
+          "name": "ILcbVH",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">If your business uses animal by-products, this will be for the premises where you use them.\n<br><br>\nUse the <a href=\"https://magic.defra.gov.uk/\" target=\"_blank\">MAGIC map (opens in new tab)</a> to find the National Grid field numbers for your land or buildings. Follow these instructions:\n\n<ol type=\"1\">\n<li>1. Select ‘Get Started’.</li>\n<li>2. Search for a postcode or place.<br></li>\n<li>3. Using the map, locate the land or building. Use the +/- icons to zoom in and out.<br></li>\n<li>4. In the top toolbar, select the fourth icon along ('Where am I?') - it looks like a target.</li>\n<li>5. Click on the land or building.<br></li>\n<li>6. A pop-up box will appear showing the land details for this location. The National Grid field number is the fourth number down and comes after the ‘Grid Ref’ (Ordnance Survey grid reference). It’s made up of 2 letters and 8 numbers, for example, AB 1234 5678.</li>\n</ol</p>>"
+        },
+        {
+          "name": "psjzoE",
+          "options": {},
+          "type": "TextField",
+          "title": "What's the National Grid field number for the main area where you'll keep livestock or use animal by-products?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/do-you-own-the-land" }]
+    },
+    {
+      "path": "/do-you-own-the-land",
+      "title": "Do you own the land?",
+      "components": [
+        {
+          "name": "rOgnUv",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Do you own the land?",
+          "hint": "If you rent the land, select 'No'.",
+          "schema": {}
+        }
+      ],
+      "next": [
+        { "path": "/rural-payments" },
+        {
+          "path": "/is-your-tenancy-agreement-for-more-than-one-year"
+        }
+      ]
+    },
+    {
+      "path": "/is-your-tenancy-agreement-for-more-than-one-year",
+      "title": "Is your tenancy agreement for more than one year?",
+      "condition": "doNotOwnTheLand",
+      "components": [
+        {
+          "name": "qLmGSL",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Is your tenancy agreement for more than one year?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/does-the-landowner-have-a-cph-number-for-the-land"
+        },
+        { "path": "/rural-payments" }
+      ]
+    },
+    {
+      "path": "/does-the-landowner-have-a-cph-number-for-the-land",
+      "title": "Does the landowner have a CPH number for the land?",
+      "condition": "tenancyIsForMoreThan1Year",
+      "components": [
+        {
+          "name": "uuQMUp",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Does the landowner have a CPH number for the land?"
+        }
+      ],
+      "next": [{ "path": "/rural-payments" }]
+    },
+    {
+      "path": "/rural-payments",
+      "title": "Rural payments",
+      "components": [
+        {
+          "name": "GtuXcI",
+          "options": {},
+          "type": "Html",
+          "content": "<p class=\"govuk-body\">Find out about the available funding for farmers, growers and land managers (opens in new tab).</p>",
+          "schema": {}
+        },
+        {
+          "name": "neWlcI",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Do you intend to claim funding from the RPA?",
+          "hint": "Your answer will help us to process your application correctly. If you're not sure, say no.",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/do-you-want-to-tell-us-anything-else" }]
+    },
+    {
+      "path": "/do-you-want-to-tell-us-anything-else",
+      "title": "Do you want to tell us anything else?",
+      "components": [
+        {
+          "name": "jAKMRb",
+          "options": { "required": false },
+          "type": "MultilineTextField",
+          "title": "Do you want to tell us anything else?",
+          "schema": {}
+        }
+      ],
+      "next": [{ "path": "/summary" }]
+    },
+    {
+      "path": "/summary",
+      "title": "Check your answers before submitting your form",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    }
+  ],
+  "lists": [
+    {
+      "title": "What is the legal status of your business?",
+      "name": "ihwVmQ",
+      "type": "string",
+      "items": [
+        { "text": "Sole proprietorship", "value": "Sole proprietorship" },
+        {
+          "text": "Private limited company (Ltd)",
+          "value": "Private limited company (Ltd)"
+        },
+        { "text": "Partnership", "value": "Partnership" },
+        {
+          "text": "Limited partnership (LP)",
+          "value": "Limited partnership (LP)"
+        },
+        { "text": "Charitable trust", "value": "Charitable trust" },
+        {
+          "text": "Limited liability partnership (LLP)",
+          "value": "Limited liability partnership (LLP)"
+        },
+        {
+          "text": "Charitable incorporated organisation (CIO)",
+          "value": "Charitable incorporated organisation (CIO)"
+        },
+        { "text": "Government (local)", "value": "Government (local)" },
+        {
+          "text": "Public limited company (PLC)",
+          "value": "Public limited company (PLC)"
+        },
+        {
+          "text": "Community interest company (CIC)",
+          "value": "Community interest company (CIC)"
+        },
+        { "text": "Non-UK company", "value": "Non-UK company" },
+        { "text": "The Crown", "value": "The Crown" },
+        {
+          "text": "Unlimited company (Ultd)",
+          "value": "Unlimited company (Ultd)"
+        },
+        { "text": "Government (central)", "value": "Government (central)" }
+      ]
+    },
+    {
+      "title": "Companies House",
+      "name": "gqNQpU",
+      "type": "string",
+      "items": [
+        {
+          "text": "Community interest company (CIC)",
+          "value": "Community interest company (CIC)"
+        },
+        {
+          "text": "Limited liability partnership (LLP)",
+          "value": "Limited liability partnership (LLP)"
+        },
+        {
+          "text": "Limited partnership (LP)",
+          "value": "Limited partnership (LP)"
+        },
+        { "text": "Non-UK company", "value": "Non-UK company" },
+        {
+          "text": "Private limited company (Ltd)",
+          "value": "Private limited company (Ltd)"
+        },
+        {
+          "text": "Public limited company (PLC)",
+          "value": "Public limited company (PLC)"
+        },
+        {
+          "text": "Unlimited company (Ultd)",
+          "value": "Unlimited company (Ultd)"
+        }
+      ]
+    },
+    {
+      "title": "Animal by-products and livestock",
+      "name": "CzxRVp",
+      "type": "string",
+      "items": [
+        { "text": "livestock only", "value": "livestock only" },
+        {
+          "text": "livestock and animal by-products",
+          "value": "livestock and animal by-products"
+        },
+        {
+          "text": "animal by-products only",
+          "value": "animal by-products only"
+        }
+      ]
+    },
+    {
+      "title": "Business type",
+      "name": "ycOtLx",
+      "type": "string",
+      "items": [
+        {
+          "text": "Hobby livestock keeper - if you keep livestock for a hobby or as a pet",
+          "value": "Hobby livestock keeper - if you keep livestock for a hobby or as a pet"
+        },
+        {
+          "text": "Professional livestock keeper - if you keep livestock as your profession",
+          "value": "Professional livestock keeper - if you keep livestock as your profession"
+        },
+        { "text": "Farmer", "value": "Farmer" },
+        { "text": "Meat industry", "value": "Meat industry" },
+        { "text": "Land manager", "value": "Land manager" },
+        {
+          "text": "Education provider or trainer",
+          "value": "Education provider or trainer"
+        },
+        {
+          "text": "Rural community, voluntary or third sector organisation",
+          "value": "Rural community, voluntary or third sector organisation"
+        },
+        { "text": "Tourism", "value": "Tourism" },
+        {
+          "text": "Forestry or woodland owner",
+          "value": "Forestry or woodland owner"
+        },
+        { "text": "Horticultural business", "value": "Horticultural business" },
+        {
+          "text": "Central or local government",
+          "value": "Central or local government"
+        },
+        {
+          "text": "Trader only organisation",
+          "value": "Trader only organisation"
+        },
+        {
+          "text": "Intervention or private storage",
+          "value": "Intervention or private storage"
+        },
+        {
+          "text": "Commons or graziers association",
+          "value": "Commons or graziers association"
+        },
+        { "text": "Leader group", "value": "Leader group" },
+        {
+          "text": "Official receiver or administrator",
+          "value": "Official receiver or administrator"
+        },
+        { "text": "Other", "value": "Other" }
+      ]
+    },
+    {
+      "title": "Livestock you keep",
+      "name": "CoRNqi",
+      "type": "string",
+      "items": [
+        { "text": "Cattle", "value": "Cattle" },
+        { "text": "Sheep", "value": "Sheep" },
+        { "text": "Goats", "value": "Goats" },
+        { "text": "Pigs", "value": "Pigs" },
+        { "text": "Deer", "value": "Deer" },
+        { "text": "More than 50 poultry", "value": "More than 50 poultry" },
+        { "text": "Other livestock", "value": "Other livestock" },
+        {
+          "text": "My business uses animal by-products",
+          "value": "My business uses animal by-products"
+        }
+      ]
+    },
+    {
+      "title": "business a market, showground or zoo",
+      "name": "rieXPV",
+      "type": "string",
+      "items": [
+        { "text": "Market", "value": "Market" },
+        { "text": "Showground", "value": "Showground" },
+        { "text": "Zoo", "value": "Zoo" },
+        { "text": "None of the above", "value": "None of the above" }
+      ]
+    },
+    {
+      "title": "National Grid field number for where you'll keep livestock",
+      "name": "OxfbRE",
+      "type": "string",
+      "items": [
+        {
+          "text": "pet owner, this might be a back yard, garden or piece of land attached to your house",
+          "value": "pet owner, this might be a back yard, garden or piece of land attached to your house"
+        },
+        {
+          "text": "hobby livestock keeper, this might be a community allotment, back yard or a piece of of land you own",
+          "value": "hobby livestock keeper, this might be a community allotment, back yard or a piece of of land you own"
+        },
+        {
+          "text": "professional livestock keeper or farmer, this would be the gathering point on your farm yard or main field",
+          "value": "professional livestock keeper or farmer, this would be the gathering point on your farm yard or main field"
+        }
+      ]
+    }
+  ],
+  "sections": [],
+  "conditions": [
+    {
+      "name": "businessAddressNotHomeAddress",
+      "value": "CMTiOK == false"
+    },
+    {
+      "name": "registeredCH",
+      "value": "rJIKfO == true"
+    },
+    {
+      "name": "registeredCC",
+      "value": "DRrBSz == true"
+    },
+    {
+      "name": "businessTypeIsOther",
+      "value": "AoofuF == 'Other'"
+    },
+    {
+      "name": "keepOtherLivestock",
+      "value": "'Other livestock' in dgTGFt"
+    },
+    {
+      "name": "noLivestockAtHomeAddress",
+      "value": "QcfaVC == false"
+    },
+    {
+      "name": "noLivestockAtBusinessAddress",
+      "value": "RiEsSm == false"
+    },
+    {
+      "name": "keepLivestockElsewhere",
+      "value": "MBoevI == true"
+    },
+    {
+      "name": "doNotOwnTheLand",
+      "value": "rOgnUv == false"
+    },
+    {
+      "name": "tenancyIsForMoreThan1Year",
+      "value": "qLmGSL == true"
+    }
+  ]
+}

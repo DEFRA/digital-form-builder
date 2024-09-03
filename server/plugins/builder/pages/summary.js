@@ -1,8 +1,8 @@
-const joi = require('joi')
+// const joi = require('joi')
 const Page = require('.')
 
 class SummaryViewModel {
-  constructor (model, state) {
+  constructor (model, state, page) {
     const details = []
 
     ;[undefined].concat(model.sections).forEach((section, index) => {
@@ -11,16 +11,22 @@ class SummaryViewModel {
         ? (state[section.name] || {})
         : state
 
-      model.pages.forEach(page => {
-        if (page.section === section) {
-          page.components.formItems.forEach(component => {
-            items.push({
-              name: component.name,
-              path: component.path,
-              label: component.title,
-              value: component.getDisplayStringFromState(sectionState),
-              url: `${page.path}?returnUrl=/summary`
-            })
+      model.pages.forEach(p => {
+        if (p.section === section) {
+          p.components.formItems.forEach(component => {
+            const isRequired = p.condition
+              ? model.conditions[p.condition].fn(state)
+              : true
+
+            if (isRequired) {
+              items.push({
+                name: component.name,
+                path: component.path,
+                label: component.title,
+                value: component.getDisplayStringFromState(sectionState),
+                url: `${p.path}?returnUrl=${page.path}`
+              })
+            }
           })
         }
       })
@@ -33,7 +39,7 @@ class SummaryViewModel {
     })
 
     const schema = model.makeSchema(state)
-    const result = joi.validate(state, schema, { abortEarly: false })
+    const result = schema.validate(state, { abortEarly: false })
 
     if (result.error) {
       this.errors = result.error.details.map(err => {
@@ -41,7 +47,7 @@ class SummaryViewModel {
 
         return {
           path: err.path.join('.'),
-          name: name,
+          name,
           message: err.message
         }
       })
@@ -76,7 +82,8 @@ class SummaryPage extends Page {
     return async (request, h) => {
       const model = this.model
       const state = await model.getState(request)
-      const viewModel = new SummaryViewModel(model, state)
+      const viewModel = new SummaryViewModel(model, state, this)
+
       return h.view('summary', viewModel)
     }
   }

@@ -25,10 +25,6 @@
       "value": "licenceDetails.licenceLength == 1 or licenceDetails.licenceLength == 8"
     },
     {
-      "name": "isSalmon",
-      "value": "licenceDetails.licenceType == 'salmonAndSeaTrout'"
-    },
-    {
       "name": "isTroutAndCourse",
       "value": "licenceDetails.licenceType == 'troutAndCourse'"
     },
@@ -41,10 +37,6 @@
       "value": "concessions.hasBlueBadge == true"
     },
     {
-      "name": "isAsapAndFull",
-      "value": "isAsap and isFull"
-    },
-    {
       "name": "isAnnualAndFull",
       "value": "isAnnual and isFull"
     },
@@ -54,11 +46,11 @@
     },
     {
       "name": "requiresNI",
-      "value": "isAnnualAndFull and hasPIPorDLA"
+      "value": "hasPIPorDLA"
     },
     {
       "name": "requiresBBCheck",
-      "value": "isAnnualAndFull and hasPIPorDLA == false"
+      "value": "hasPIPorDLA == false"
     },
     {
       "name": "requiresBB",
@@ -80,12 +72,12 @@
           "schema": {}
         }
       ],
+      "section": "licenceDetails",
       "next": [
         {
           "path": "/full-name"
         }
-      ],
-      "section": "licenceDetails"
+      ]
     },
     {
       "path": "/full-name",
@@ -109,6 +101,7 @@
     },
     {
       "path": "/date-of-birth",
+      "controller": "./pages/dob.js",
       "components": [
         {
           "type": "DatePartsField",
@@ -119,12 +112,29 @@
           "schema": {}
         }
       ],
+      "section": "personalDetails",
       "next": [
+        {
+          "path": "/under-13"
+        },
         {
           "path": "/address"
         }
+      ]
+    },
+    {
+      "path": "/under-13",
+      "components": [
+        {
+          "type": "Html",
+          "content": "<div class=\"govuk-prose-scope\">No licence required</div>",
+          "options": {},
+          "schema": {}
+        }
       ],
-      "section": "personalDetails"
+      "section": "personalDetails",
+      "condition": "isJunior",
+      "title": "Under 13"
     },
     {
       "path": "/address",
@@ -137,12 +147,12 @@
           "schema": {}
         }
       ],
+      "section": "personalDetails",
       "next": [
         {
           "path": "/start-kind"
         }
-      ],
-      "section": "personalDetails"
+      ]
     },
     {
       "path": "/start-kind",
@@ -157,27 +167,22 @@
           "schema": {}
         }
       ],
+      "section": "licenceDetails",
       "next": [
         {
-          "path": "/start-date",
-          "if": "startKind == 'absolute'"
-        },
-        {
-          "path": "/benefits-check",
-          "if": "age < 65"
-        },
-        {
-          "path": "/licence-type"
+          "path": "/start-date"
         }
-      ],
-      "section": "licenceDetails"
+      ]
     },
     {
       "path": "/start-date",
+      "section": "licenceDetails",
+      "group": "absoluteStartDate",
+      "controller": "./pages/start-date.js",
       "components": [
         {
           "type": "DatePartsField",
-          "name": "startDateTime",
+          "name": "startDate",
           "title": "When would you like your licence to start?",
           "options": {},
           "schema": {}
@@ -185,65 +190,116 @@
       ],
       "next": [
         {
-          "path": "/benefits-check",
-          "if": "licenceLength == 365 && age > 65"
-        },
+          "path": "/start-time"
+        }
+      ]
+    },
+    {
+      "path": "/start-time",
+      "section": "licenceDetails",
+      "group": "absoluteStartDate",
+      "components": [
         {
-          "path": "/licence-type",
-          "if": "licenceLength == 365 && age < 65"
-        },
-        {
-          "path": "/start-time",
-          "if": "licenceLength == 1 || licenceLength == 8"
+          "type": "TimeField",
+          "name": "startTime",
+          "title": "What time would you like the licence to start?",
+          "options": {},
+          "schema": {}
         }
       ],
-      "section": "licenceDetails"
+      "condition": "isAbsoluteAndShortTerm",
+      "next": [
+        {
+          "path": "/benefits-check"
+        }
+      ]
     },
     {
       "path": "/benefits-check",
       "components": [
         {
           "type": "YesNoField",
-          "name": "benefits",
+          "name": "hasPIPorDLA",
           "title": "Do you receive any of the following benefits?",
           "hint": "<ul class=\"govuk-list  govuk-list--bullet\">\r\n          <li>Personal Independence Payment (PIP)</li>\r\n          <li>Disability Living Allowance (DLA)</li>\r\n        </ul>\r\n\r\n<p>\r\nWe use this information to find out if you are eligible for a disabled concession.</p>",
           "options": {},
           "schema": {}
         }
       ],
+      "section": "concessions",
+      "group": "concessions",
       "next": [
-        {
-          "path": "/blue-badge-check",
-          "if": "benefits == false"
-        },
         {
           "path": "/national-insurance-number"
         }
+      ]
+    },
+    {
+      "path": "/national-insurance-number",
+      "components": [
+        {
+          "options": {
+            "classes": "govuk-input--width-10"
+          },
+          "schema": {
+            "max": 20
+          },
+          "type": "TextField",
+          "name": "nationalInsuranceNumber",
+          "title": "What is your National Insurance number?",
+          "hint": "We use your National Insurance number to find your benefit details, so that you can get a disabled concession.\r\n\r\n\r\n<br>\r\n\r\nIt’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+        }
       ],
-      "section": "concessions"
+      "section": "concessions",
+      "group": "concessions",
+      "condition": "requiresNI",
+      "next": [
+        {
+          "path": "/blue-badge-check"
+        }
+      ]
     },
     {
       "path": "/blue-badge-check",
       "components": [
         {
           "type": "YesNoField",
-          "name": "blueBadgeHolder",
+          "name": "hasBlueBadge",
           "title": "Do you have a Blue Badge?",
           "hint": "We use this information to find out if you are eligible for a disabled concession.",
           "options": {},
           "schema": {}
         }
       ],
+      "section": "concessions",
+      "group": "concessions",
+      "condition": "requiresBBCheck",
+      "next": [
+        {
+          "path": "/blue-badge-number"
+        }
+      ]
+    },
+    {
+      "path": "/blue-badge-number",
+      "section": "concessions",
+      "group": "concessions",
+      "components": [
+        {
+          "type": "TextField",
+          "name": "blueBadgeNumber",
+          "title": "What is your Blue Badge number?",
+          "hint": "We use this information to find your Blue Badge details, so that you can get a disabled concession.",
+          "options": {},
+          "schema": {}
+        }
+      ],
+      "condition": "requiresBB",
       "next": [
         {
           "path": "/licence-type"
-        },
-        {
-          "path": "/blue-badge-number",
-          "if": "blueBadgeHolder == true"
         }
-      ],
-      "section": "concessions"
+      ]
     },
     {
       "path": "/licence-type",
@@ -266,39 +322,15 @@
           "schema": {}
         }
       ],
+      "section": "licenceDetails",
       "next": [
         {
-          "path": "/number-of-rods",
-          "if": "licenceType == 'troutAndCourse'"
+          "path": "/number-of-rods"
         },
         {
           "path": "/contact"
         }
-      ],
-      "section": "licenceDetails"
-    },
-    {
-      "path": "/national-insurance-number",
-      "components": [
-        {
-          "options": {
-            "classes": "govuk-input--width-10"
-          },
-          "schema": {
-            "max": 20
-          },
-          "type": "TextField",
-          "name": "nationalInsuranceNumber",
-          "title": "What is your National Insurance number?",
-          "hint": "We use your National Insurance number to find your benefit details, so that you can get a disabled concession.\r\n\r\n\r\n<br>\r\n\r\nIt’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-        }
-      ],
-      "next": [
-        {
-          "path": "/licence-type"
-        }
-      ],
-      "section": "concessions"
+      ]
     },
     {
       "path": "/number-of-rods",
@@ -313,12 +345,13 @@
           "schema": {}
         }
       ],
+      "section": "licenceDetails",
+      "condition": "isTroutAndCourse",
       "next": [
         {
           "path": "/contact"
         }
-      ],
-      "section": "licenceDetails"
+      ]
     },
     {
       "path": "/contact",
@@ -348,9 +381,22 @@
           "schema": {}
         }
       ],
-      "next": [],
       "title": "How can we send you your licence details?",
-      "section": "personalDetails"
+      "section": "personalDetails",
+      "next": [
+        {
+          "path": "/summary"
+        },
+        {
+          "path": "/data-protection"
+        }
+      ]
+    },
+    {
+      "path": "/summary",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "title": "Summary"
     },
     {
       "path": "/data-protection",
@@ -361,47 +407,6 @@
           "content": "<div class=\"govuk-prose-scope\">\r\n      <p>\r\n        The Environment Agency will use the information you have provided to deal with your licence application, to monitor compliance with the licence conditions, to provide you with further information about our fishing licence services and activities (including\r\n        expiry or administration notices), and to provide you with our national and local fisheries information:</p>\r\n      <ul>\r\n        <li>byelaws, if necessary</li>\r\n        <li>disease outbreak and control measures</li>\r\n        <li>e-newsletters</li>\r\n      </ul>\r\n\r\n      <p>We may also use your information to help us:</p>\r\n\r\n      <ul>\r\n        <li>carry out statistical analysis, research and development on environmental issues</li>\r\n        <li>contact you to assess customer satisfaction and improve our service</li>\r\n        <li>investigate when people might be breaking the law and take any resulting action</li>\r\n        <li>prevent people from breaking the law, and</li>\r\n        <li>respond to requests for information under the Freedom of Information Act 2000 and the Environmental Information Regulations 2004, where the Data Protection Act 1998 allows</li>\r\n      </ul>\r\n\r\n      <p>We may pass your information on to our partners or suppliers to do these things on our behalf.</p>\r\n\r\n        <a class=\"govuk--button\" href=\"/contact\">Continue</a>\r\n    </div>",
           "options": {},
           "schema": {}
-        }
-      ],
-      "next": []
-    },
-    {
-      "path": "/blue-badge-number",
-      "section": "concessions",
-      "components": [
-        {
-          "type": "TextField",
-          "name": "blueBadgeNumber",
-          "title": "What is your Blue Badge number?",
-          "hint": "We use this information to find your Blue Badge details, so that you can get a disabled concession.",
-          "options": {},
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/licence-type"
-        }
-      ]
-    },
-    {
-      "path": "/start-time",
-      "section": "licenceDetails",
-      "components": [
-        {
-          "type": "TimeField",
-          "name": "startTime",
-          "title": "What time would you like the licence to start?",
-          "options": {},
-          "schema": {}
-        }
-      ],
-      "next": [
-        {
-          "path": "/benefits-check"
-        },
-        {
-          "path": "/licence-type"
         }
       ]
     }
@@ -493,6 +498,20 @@
           "description": ""
         }
       ]
+    }
+  ],
+  "groups": [
+    {
+      "name": "absoluteStartDate",
+      "colour": "#83a1fb",
+      "title": "Start date",
+      "condition": "isAbsolute"
+    },
+    {
+      "name": "concessions",
+      "colour": "#f97171",
+      "title": "Concessions",
+      "condition": "isAnnualAndFull"
     }
   ]
 }

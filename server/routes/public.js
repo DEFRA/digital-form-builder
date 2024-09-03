@@ -11,7 +11,7 @@ module.exports = [{
   path: '/assets/all.js',
   options: {
     handler: {
-      file: 'node_modules/govuk-frontend/all.js'
+      file: 'node_modules/govuk-frontend/dist/govuk/all.js'
     }
   }
 }, {
@@ -39,7 +39,7 @@ module.exports = [{
         path: [
           'server/public/static',
           'server/public/build',
-          'node_modules/govuk-frontend/assets'
+          'node_modules/govuk-frontend/dist/govuk/assets'
         ]
       }
     }

@@ -380,7 +380,7 @@
         },
         {
           "type": "Para",
-          "content": "Read about <a href=\"/data-protection\">how we use your personal information</a>",
+          "content": "Read about <a class=\"govuk-link\" href=\"/data-protection\">how we use your personal information</a>",
           "options": {},
           "schema": {}
         }
